@@ -1,0 +1,33 @@
+1.npm install -g angular-cli
+
+2.ng version  ---to check installed or not
+
+3.---create new angular2 app
+    
+    ng new todo-app
+
+4.go to directory
+ 
+ cd todo-app
+
+5.start angular cli development server
+
+   ng serve
+
+6.creating toto classes 
+
+ ng generate class Todo --spec
+
+--spec to test 
+
+7.ng test
+
+for testing app
+
+8.creating services 
+
+ng generate service TodoData
+
+
+9.creating components
+ng generate component posts
