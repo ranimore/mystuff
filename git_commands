@@ -1,0 +1,23 @@
+Git commands 
+1.Clone repository 
+  git clone <path of repo>
+2.cd <repo>
+3.Add new files to repo 
+   git add .
+4.Commit changes 
+   git commit -m "first commit"
+5.Push code to remote 
+  git push
+6.See all branches
+   git branch -a
+7.Create new branch
+   git checkout -b <branch name>
+8.Switch to new branch 
+  git checkout <branch name>
+9.Push local branch to remote
+  git push -u origin <branch name>
+  
+10.merge branch
+  git merge <branch name>
+  
+
