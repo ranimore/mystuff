@@ -1,0 +1,7 @@
+<br>
+<jqxButton #excelExport (onClick)="excelExportClick()" class="btn btn-success">Export to Excel</jqxButton>
+<br>
+<div class="container" style="overflow:scroll">
+    <jqxTreeGrid [width]="Dwidth" [source]="dataAdapter" [exportSettings]="exportSettings" [pageable]="false" [sortable]="false" [columns]="columns" [columnGroups]="columnGroups" [ready]="ready" #TreeGrid>
+    </jqxTreeGrid>
+</div>

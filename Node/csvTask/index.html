@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.51/jquery.form.min.js"></script>
+
+</head>
+
+
+<body>
+  <div class="container col-md-offset-3 col-md-6" style="background:gray;margin-top:50px;padding:15px; ">
+  <form id="uploadForm" enctype="multipart/form-data" action="/fileupload" method="post">
+    
+     <div class="panel">
+       <br>
+      <input type="file" name="file" /></br>
+      <input type="submit" value="Upload image" name="submit" class="btn btn-primary">
+      <span id = "status"></span>
+     </div>
+     
+   
+    </form>
+<button id="AddDisatance" class="btn btn-primary">Add Distance to CSV</button> <span id ="process"></span>
+    <span id="downloadFile"></span>
+ </div>
+</body>
+ 
+
+  <script>
+     var datenow=[];
+  $(document).ready(function() {
+        var n=123;
+        var s='123k';
+         if(isNaN(s))
+         {
+             console.log('string');
+         }
+         else
+          console.log('number');
+
+     $('#uploadForm').submit(function() {
+        $("#status").empty().text("File is uploading...");
+        $(this).ajaxSubmit({
+
+            error: function(xhr) {
+        status('Error: ' + xhr.status);
+            },
+
+            success: function(response) {
+        $("#status").empty().text(response);
+         var d = new Date();
+         datenow.push(d.getDate()+'-'+d.getMonth()+'-'+d.getFullYear()+'-'+d.getHours()+'-'+d.getMinutes()+'-'+d.getSeconds());
+              
+            }
+    });
+        //Very important line, it disable the page refresh.
+    return false;
+    });  
+
+$('#AddDisatance').click(function(){
+ $("#process").empty().text("Processing.....");
+ $.ajax({
+            type: 'POST',
+            url: '/AddDistance',
+            
+               error: function(xhr) {
+        status('Error: ' + xhr.status);
+            },
+
+            success: function(response) {
+              var i=0;
+              var len=response;
+            var interval=setInterval(function(){ 
+                  var message = "processing " + (i + 1)  + "/" + len;
+                   if(i ==len){
+                   clearInterval(interval);
+                    $("#process").empty().text("Completed..!");
+
+                  var filename= 'file-'+datenow[0]+'.csv';
+                  var htmldata='<br><a href="/download/'+filename+'">Download '+filename+'</a> &nbsp;<a href="/delete/'+filename+'">Delete '+filename+'</a>'
+                   $('#downloadFile').html(htmldata);
+                   
+                    return;
+                }
+                  $("#process").empty().text(message);
+                  i++;
+               }, 275);
+        
+                console.log(response);
+            }   
+        
+            
+        });
+
+});
+
+});
+</script>
+</html>

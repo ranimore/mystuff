@@ -1,0 +1,66 @@
+﻿.CodeMirror { height:300px;border: 2px solid #ddd; font-family: Arial, sans-serif;font-size:15px; }
+.CodeMirror-scroll { max-height: 300px; }
+.CodeMirror pre { padding-left: 7px; line-height: 1.25; }
+
+
+body {
+   font-family: Arial, sans-serif;
+   background-color:gainsboro;
+  /*background: #456;*/
+
+   font-size:17px;
+     }
+option {
+   font-family: Arial, sans-serif;
+        }  
+#panel {
+   background-color:white;
+   width:650px;
+   height:550px;
+   margin-top:20px;
+   margin-left:25%;
+   padding:20px;
+   /*border:1px solid mediumpurple ;*/
+   border-top-right-radius:85px;
+   border-bottom-left-radius:85px;
+}
+button {
+  background: #28d;
+  border-color: transparent;
+  color: #fff;
+  cursor: pointer;
+  width:150px;
+  border-radius:8px;
+  font-size:18px;
+}
+         
+ button:hover {
+  background: #17c;
+}
+
+/* Buttons' focus effect */
+  button:focus {
+  border-color: #05a;
+}
+
+ 
+  input[type="text"]
+ {
+  background: #fff;
+  border-color: #bbb;
+  color: #555;
+  border-radius:5px;
+  border-width: 1px;
+  border-style: solid;
+  padding: 5px;
+  width:200px;
+  font-family: Arial, sans-serif;
+  font-size:17px;
+}
+
+/* Text fields' focus effect */
+ input[type="text"]:focus
+{
+  border-color: #888;
+}
+

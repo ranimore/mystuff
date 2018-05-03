@@ -1,0 +1,17 @@
+<table class="table">
+    <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Action</th>
+    </tr>
+    <tr *ngFor="let user of users">
+        <td *ngIf="!user.editmode">{{user.name}}</td>
+        <td *ngIf="user.editmode"><input type="text" value="{{user.name}}" name="username" ngModel>{{username}}</td>
+        <td *ngIf="!user.editmode">{{user.age}}</td>
+        <td *ngIf="user.editmode"><input type="number" value="{{user.age}}" name="userage" ngModel></td>
+        <td *ngIf="!user.editmode"><button (click)="user.editmode=!user.editmode">Edit</button><button (click)="delete(user)">delete</button></td>
+        <td *ngIf="user.editmode">
+            <button (click)="update(user,username,userage);user.editmode=!user.editmode">Save</button><button (click)="user.editmode=!user.editmode">cancel</button>
+        </td>
+    </tr>
+</table>

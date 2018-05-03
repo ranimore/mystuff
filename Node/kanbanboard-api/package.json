@@ -1,0 +1,27 @@
+{
+  "name": "kanbanboard-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://ranimore@bitbucket.org/ranimore/kanbanboard-api.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/ranimore/kanbanboard-api#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.1",
+    "express": "^4.15.4",
+    "express-validator": "^4.1.1",
+    "method-override": "^2.3.9",
+    "mongodb": "^2.2.31",
+    "uuid": "^3.1.0",
+    "winston": "^2.3.1"
+  }
+}
