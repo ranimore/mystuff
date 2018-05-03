@@ -1,0 +1,1026 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SlateMasterModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Channel_Slate_details">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SlateID" Type="nvarchar" MaxLength="50" />
+          <Property Name="ChannelName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="City_Code" />
+          </Key>
+          <Property Name="City_Code" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="City_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="State_Code" Type="nvarchar" MaxLength="2" />
+          <Property Name="Country_Code" Type="nvarchar" MaxLength="4" />
+          <Property Name="Alias" Type="nvarchar" MaxLength="10" />
+          <Property Name="CrUId" Type="nvarchar" MaxLength="10" />
+          <Property Name="CrDate" Type="datetime" />
+          <Property Name="CrTime" Type="datetime" />
+          <Property Name="FrzInd" Type="bit" Nullable="false" />
+          <Property Name="UpUId" Type="nvarchar" MaxLength="10" />
+          <Property Name="UpDate" Type="datetime" />
+          <Property Name="UpTime" Type="datetime" />
+          <Property Name="UpPlace" Type="nvarchar" MaxLength="18" />
+          <Property Name="TextBlock" Type="nvarchar" MaxLength="8" />
+          <Property Name="PathToText" Type="nvarchar" MaxLength="8" />
+          <Property Name="STD_Code" Type="nvarchar" MaxLength="10" />
+          <Property Name="City_Code_No" Type="int" />
+          <Property Name="TextBlockShort" Type="nvarchar" MaxLength="20" />
+          <Property Name="TextBlockLong" Type="nvarchar" MaxLength="20" />
+          <Property Name="PathToImage" Type="nvarchar" MaxLength="50" />
+          <Property Name="Region_Code" Type="nvarchar" MaxLength="10" />
+          <Property Name="ClientNotes" Type="ntext" />
+          <Property Name="OpsNotes" Type="ntext" />
+          <Property Name="SupplierNotes" Type="ntext" />
+          <Property Name="Approved" Type="bit" />
+          <Property Name="Questions" Type="ntext" />
+          <Property Name="LongNotes" Type="ntext" />
+          <Property Name="ShortNotes" Type="ntext" />
+          <Property Name="OurOpinionNotes" Type="ntext" />
+          <Property Name="SalesTipNotes" Type="ntext" />
+          <Property Name="FactSheetNotes" Type="ntext" />
+          <Property Name="AutoInvoiceRemark" Type="nvarchar" MaxLength="500" />
+          <Property Name="SeqNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="City_Code_Crs" Type="nvarchar" MaxLength="10" />
+          <Property Name="GMapLat" Type="float" />
+          <Property Name="GMapLng" Type="float" />
+          <Property Name="ShowOnWebInd" Type="bit" />
+          <Property Name="IsHub" Type="bit" Nullable="false" />
+          <Property Name="RegionCode" Type="nvarchar" MaxLength="10" />
+          <Property Name="DepTaxText" Type="ntext" />
+          <Property Name="WebPageTitle" Type="nvarchar" MaxLength="500" />
+          <Property Name="WebsiteImagePathName" Type="nvarchar" MaxLength="150" />
+          <Property Name="IsCapitalCity" Type="bit" Nullable="false" />
+          <Property Name="CapitalInd" Type="bit" Nullable="false" />
+          <Property Name="City_Code_Linked" Type="varchar" MaxLength="10" />
+          <Property Name="URLFriendlyName" Type="nvarchar" MaxLength="500" />
+          <Property Name="IsBoatInd" Type="bit" Nullable="false" />
+          <Property Name="AccommodationLabelOnWeb" Type="nvarchar" MaxLength="100" />
+          <Property Name="URLFriendlyNameTemp" Type="varchar" MaxLength="500" />
+          <Property Name="UseGroupNameInd" Type="bit" />
+          <Property Name="ImagesSourcedInd" Type="bit" />
+          <Property Name="ImagesSourcedBy" Type="nvarchar" MaxLength="10" />
+          <Property Name="ImagesSourcedOn" Type="datetime" />
+          <Property Name="n465x380" Type="nvarchar" MaxLength="1" />
+          <Property Name="n465x380_ImgCnt" Type="int" />
+          <Property Name="n1460x640" Type="nvarchar" MaxLength="1" />
+          <Property Name="n1460x640_ImgCnt" Type="int" />
+          <Property Name="Email" Type="nvarchar" MaxLength="150" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="150" />
+          <Property Name="WebPageLink" Type="nvarchar" MaxLength="1000" />
+          <Property Name="n620x380" Type="nvarchar" MaxLength="1" />
+          <Property Name="n620x380_ImgCnt" Type="int" />
+          <Property Name="GroupName" Type="nvarchar" MaxLength="50" />
+          <Property Name="SerialNo" Type="smallint" />
+          <Property Name="City_Code_ISO" Type="nvarchar" MaxLength="10" />
+          <Property Name="IsCapital" Type="bit" Nullable="false" />
+          <Property Name="Capital" Type="bit" Nullable="false" />
+          <Property Name="WebsiteUrl" Type="nvarchar" MaxLength="100" />
+          <Property Name="Serial_No" Type="int" />
+          <Property Name="CityType_Code" Type="nvarchar" MaxLength="20" />
+          <Property Name="IsBoatCity" Type="bit" Nullable="false" />
+          <Property Name="1460x640" Type="nvarchar" MaxLength="1" />
+          <Property Name="WebShortText" Type="nvarchar" MaxLength="1000" />
+          <Property Name="city_name_web" Type="nvarchar" MaxLength="150" />
+          <Property Name="HotelListHeading" Type="nvarchar" MaxLength="100" />
+          <Property Name="ThumbnailImagePath" Type="nvarchar" MaxLength="255" />
+          <Property Name="ThumbnailImageAlt" Type="nvarchar" MaxLength="100" />
+          <Property Name="MetaDescription" Type="nvarchar" MaxLength="2000" />
+          <Property Name="MetaKeyword" Type="nvarchar" MaxLength="2000" />
+          <Property Name="ImageCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="CMS_ThumbnailImagePath" Type="nvarchar" MaxLength="250" />
+          <Property Name="TourListHeading" Type="nvarchar" MaxLength="100" />
+          <Property Name="ApplyToAllRegion" Type="bit" />
+          <Property Name="IsFeaturedInd" Type="bit" />
+          <Property Name="RegionListHeader" Type="nvarchar" MaxLength="100" />
+          <Property Name="SerialNo_Featured" Type="int" />
+          <Property Name="ShowOnCountryInd" Type="bit" />
+          <Property Name="ShowOnHotelInd" Type="bit" />
+          <Property Name="SerialNoOnCountry" Type="smallint" />
+          <Property Name="SerialNoOnHotel" Type="smallint" />
+          <Property Name="NameOnWebCountry" Type="nvarchar" MaxLength="50" />
+          <Property Name="NameOnWebHotel" Type="nvarchar" MaxLength="50" />
+          <Property Name="NameOnWebItinerary" Type="nvarchar" MaxLength="50" />
+          <Property Name="InspirationListHeader" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="Country_Code" />
+          </Key>
+          <Property Name="Country_Code" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="Country_Name" Type="nvarchar" MaxLength="40" />
+          <Property Name="MinNoOfDays" Type="smallint" />
+          <Property Name="CrUId" Type="nvarchar" MaxLength="10" />
+          <Property Name="CrDate" Type="datetime" />
+          <Property Name="CrTime" Type="datetime" />
+          <Property Name="FrzInd" Type="bit" Nullable="false" />
+          <Property Name="UpUId" Type="nvarchar" MaxLength="10" />
+          <Property Name="UpDate" Type="datetime" />
+          <Property Name="UpTime" Type="datetime" />
+          <Property Name="UpPlace" Type="nvarchar" MaxLength="18" />
+          <Property Name="ISD_Code" Type="nvarchar" MaxLength="10" />
+          <Property Name="Telex_Code" Type="nvarchar" MaxLength="10" />
+          <Property Name="MinGrpVisaSize" Type="smallint" />
+          <Property Name="PassValidMonth" Type="smallint" />
+          <Property Name="Interest_Short_Code" Type="nvarchar" MaxLength="4" />
+          <Property Name="TextBlockLong" Type="nvarchar" MaxLength="20" />
+          <Property Name="TextBlockShort" Type="nvarchar" MaxLength="20" />
+          <Property Name="PathToImage" Type="nvarchar" MaxLength="50" />
+          <Property Name="ManagerUId" Type="nvarchar" MaxLength="10" />
+          <Property Name="LongNotes" Type="ntext" />
+          <Property Name="ShortNotes" Type="ntext" />
+          <Property Name="OurOpinionNotes" Type="ntext" />
+          <Property Name="SalesTipNotes" Type="ntext" />
+          <Property Name="FactSheetNotes" Type="ntext" />
+          <Property Name="PassportBeforeTime" Type="nvarchar" MaxLength="10" />
+          <Property Name="AutoInvoiceRemark" Type="ntext" />
+          <Property Name="SeqNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VisaNotes" Type="ntext" />
+          <Property Name="CheckinLetterDocName" Type="nvarchar" MaxLength="20" />
+          <Property Name="CheckinLetterDocRank" Type="int" />
+          <Property Name="OccupationMandatoryForVisa" Type="bit" Nullable="false" />
+          <Property Name="TimeDiffToGMT" Type="nvarchar" MaxLength="6" />
+          <Property Name="ISOCode" Type="nvarchar" MaxLength="5" />
+          <Property Name="WebsitePageCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="ShowOnWebInd" Type="bit" />
+          <Property Name="Interest_Short_Code_Web" Type="nvarchar" MaxLength="50" />
+          <Property Name="DepTaxText" Type="ntext" />
+          <Property Name="WebPageTitle" Type="nvarchar" MaxLength="500" />
+          <Property Name="UseRegionOrCityInFIT" Type="nvarchar" MaxLength="1" />
+          <Property Name="OnSaleInd" Type="bit" Nullable="false" />
+          <Property Name="CheckInLetterDocName_2010" Type="nvarchar" MaxLength="20" />
+          <Property Name="WebPageTitle_Tours" Type="nvarchar" MaxLength="500" />
+          <Property Name="WebsiteImagePathName" Type="nvarchar" MaxLength="150" />
+          <Property Name="ISOName" Type="nvarchar" MaxLength="150" />
+          <Property Name="TeamName" Type="varchar" MaxLength="25" />
+          <Property Name="EUInd" Type="bit" />
+          <Property Name="SellingType" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="SerialNo" Type="int" />
+          <Property Name="City_Code_Capital" Type="nvarchar" MaxLength="10" />
+          <Property Name="country_name_web" Type="varchar" MaxLength="150" />
+          <Property Name="country_name_menu" Type="varchar" MaxLength="150" />
+          <Property Name="DetailPDFPathName" Type="varchar" MaxLength="250" />
+          <Property Name="ShowHolidayIdeas1" Type="bit" />
+          <Property Name="ShowHolidayIdeas2" Type="bit" />
+          <Property Name="ShowHolidayIdeas3" Type="bit" />
+          <Property Name="WebsiteToHotelInd" Type="bit" />
+          <Property Name="URLFriendlyName" Type="nvarchar" MaxLength="500" />
+          <Property Name="URLFriendlyNameForCountryHolidays" Type="nvarchar" MaxLength="500" />
+          <Property Name="ShowOnOnlineAddress" Type="bit" />
+          <Property Name="UseAllBoatTemplate" Type="bit" />
+          <Property Name="ShowMapInd" Type="bit" />
+          <Property Name="ShowOnWebGrpEnquiryInd" Type="bit" />
+          <Property Name="SerialNoOnlineAddress" Type="int" />
+          <Property Name="ISO3Code" Type="varchar" MaxLength="3" />
+          <Property Name="ImagesSourcedInd" Type="bit" />
+          <Property Name="ImagesSourcedBy" Type="nvarchar" MaxLength="10" />
+          <Property Name="ImagesSourcedOn" Type="datetime" />
+          <Property Name="n465x380" Type="nvarchar" MaxLength="1" />
+          <Property Name="n465x380_ImgCnt" Type="int" />
+          <Property Name="n1460x640" Type="nvarchar" MaxLength="1" />
+          <Property Name="n1460x640_ImgCnt" Type="int" />
+          <Property Name="Email" Type="nvarchar" MaxLength="150" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="150" />
+          <Property Name="WebPageLink" Type="nvarchar" MaxLength="1000" />
+          <Property Name="UseGroupNameInd" Type="bit" />
+          <Property Name="ShowCountryInfoTabsInd" Type="bit" />
+          <Property Name="WebPageTitle_Interest" Type="nvarchar" MaxLength="500" />
+          <Property Name="CountryNameForImgPath" Type="nvarchar" MaxLength="40" />
+          <Property Name="Country_Code_Domicile" Type="nvarchar" MaxLength="4" />
+          <Property Name="WebShortText" Type="nvarchar(max)" />
+          <Property Name="ThumbnailImagePath" Type="nvarchar" MaxLength="255" />
+          <Property Name="ThumbnailImageAlt" Type="nvarchar" MaxLength="100" />
+          <Property Name="AllowExpert" Type="bit" />
+          <Property Name="MetaDescription" Type="nvarchar" MaxLength="2000" />
+          <Property Name="MetaKeyword" Type="nvarchar" MaxLength="2000" />
+          <Property Name="IsDirectToHotelInd" Type="bit" />
+          <Property Name="AmazonURL" Type="nvarchar" MaxLength="400" />
+          <Property Name="WebsiteURL" Type="nvarchar" MaxLength="400" />
+          <Property Name="ImageCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="CMS_ThumbnailImagePath" Type="nvarchar" MaxLength="250" />
+          <Property Name="TourListHeading" Type="nvarchar" MaxLength="100" />
+          <Property Name="CountryExpListHeading" Type="nvarchar" MaxLength="400" />
+          <Property Name="ApplyToAllRegion" Type="bit" />
+          <Property Name="IsForthComingInd" Type="bit" />
+          <Property Name="ExcursionListHeading" Type="nvarchar" MaxLength="100" />
+          <Property Name="HotelListHeading" Type="nvarchar" MaxLength="100" />
+          <Property Name="OfferListHeading" Type="nvarchar" MaxLength="100" />
+          <Property Name="WebPageTitle_Gallery" Type="nvarchar" MaxLength="500" />
+          <Property Name="MetaDescription_Gallery" Type="nvarchar" MaxLength="2000" />
+          <Property Name="Metakeyword_Gallery" Type="nvarchar" MaxLength="2000" />
+          <Property Name="InspirationListHeader" Type="nvarchar" MaxLength="100" />
+          <Property Name="IsFeaturedInd" Type="bit" />
+          <Property Name="SerialNo_Featured" Type="int" />
+          <Property Name="CityListHeader" Type="nvarchar" MaxLength="100" />
+          <Property Name="GMapLat" Type="float" />
+          <Property Name="GMapLng" Type="float" />
+        </EntityType>
+        <EntityType Name="Hotel">
+          <Key>
+            <PropertyRef Name="Hotel_Code" />
+          </Key>
+          <Property Name="Hotel_Code" Type="int" Nullable="false" />
+          <Property Name="Hotel_Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="ShortName" Type="nvarchar" MaxLength="20" />
+          <Property Name="City_Code" Type="nvarchar" MaxLength="10" />
+          <Property Name="Notes" Type="ntext" />
+          <Property Name="TextBlockLong" Type="nvarchar" MaxLength="20" />
+          <Property Name="PathToTextLong" Type="nvarchar" MaxLength="50" />
+          <Property Name="CrUId" Type="nvarchar" MaxLength="10" />
+          <Property Name="CrDate" Type="datetime" />
+          <Property Name="CrTime" Type="datetime" />
+          <Property Name="FrzInd" Type="bit" Nullable="false" />
+          <Property Name="UpUId" Type="nvarchar" MaxLength="10" />
+          <Property Name="UpDate" Type="datetime" />
+          <Property Name="UpTime" Type="datetime" />
+          <Property Name="UpPlace" Type="nvarchar" MaxLength="18" />
+          <Property Name="SerialNo" Type="smallint" />
+          <Property Name="BClass_Code" Type="nvarchar" MaxLength="4" />
+          <Property Name="CheckIn" Type="datetime" />
+          <Property Name="CheckOut" Type="datetime" />
+          <Property Name="Add1" Type="nvarchar" MaxLength="60" />
+          <Property Name="Add2" Type="nvarchar" MaxLength="60" />
+          <Property Name="Add3" Type="nvarchar" MaxLength="60" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" />
+          <Property Name="State" Type="nvarchar" MaxLength="50" />
+          <Property Name="Country" Type="nvarchar" MaxLength="50" />
+          <Property Name="Zip" Type="nvarchar" MaxLength="10" />
+          <Property Name="AgentInd" Type="bit" Nullable="false" />
+          <Property Name="GroupName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Keyword" Type="nvarchar" MaxLength="4" />
+          <Property Name="HostRating" Type="nvarchar" MaxLength="4" />
+          <Property Name="HotelRating" Type="nvarchar" MaxLength="4" />
+          <Property Name="HostPref" Type="nvarchar" MaxLength="10" />
+          <Property Name="TextBlockShort" Type="nvarchar" MaxLength="20" />
+          <Property Name="PathToTextShort" Type="nvarchar" MaxLength="50" />
+          <Property Name="PathToImage" Type="nvarchar" MaxLength="50" />
+          <Property Name="ClientNotes" Type="ntext" />
+          <Property Name="OpsNotes" Type="ntext" />
+          <Property Name="SupplierNotes" Type="ntext" />
+          <Property Name="Approved" Type="bit" />
+          <Property Name="Questions" Type="ntext" />
+          <Property Name="LongNotes" Type="ntext" />
+          <Property Name="ShortNotes" Type="ntext" />
+          <Property Name="OurOpinionNotes" Type="ntext" />
+          <Property Name="SalesTipNotes" Type="ntext" />
+          <Property Name="FactSheetNotes" Type="ntext" />
+          <Property Name="LastVisitedDate" Type="datetime" />
+          <Property Name="GMapLat" Type="float" />
+          <Property Name="GMapLng" Type="float" />
+          <Property Name="ShowOnWebInd" Type="bit" />
+          <Property Name="NoOfRooms" Type="int" />
+          <Property Name="NotesSeason" Type="ntext" />
+          <Property Name="WebPageTitle" Type="nvarchar" MaxLength="500" />
+          <Property Name="IsBoatInd" Type="bit" />
+          <Property Name="MealBasis_Code_Short" Type="nvarchar" MaxLength="4" />
+          <Property Name="IsFeaturedInd" Type="bit" />
+          <Property Name="HotelFormatInItinerary" Type="varchar" MaxLength="50" />
+          <Property Name="URLFriendlyName" Type="nvarchar" MaxLength="500" />
+          <Property Name="Hotel_Code_Link" Type="int" />
+          <Property Name="URLFriendlyNameTemp" Type="varchar" MaxLength="150" />
+          <Property Name="UseForDummyItinerary" Type="bit" />
+          <Property Name="WebOfferMemo" Type="varchar" MaxLength="2000" />
+          <Property Name="ShowOfferOnWebInd" Type="bit" />
+          <Property Name="ShowOfferOnDate" Type="datetime" />
+          <Property Name="ShowOfferToDate" Type="datetime" />
+          <Property Name="WebOfferShortText" Type="varchar" MaxLength="50" />
+          <Property Name="HotelCode" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SerialNo_City" Type="int" />
+          <Property Name="hotel_name_web" Type="nvarchar" MaxLength="150" />
+          <Property Name="ThumbnailImagePath" Type="nvarchar" MaxLength="255" />
+          <Property Name="ThumbnailImageAlt" Type="nvarchar" MaxLength="100" />
+          <Property Name="Email" Type="nvarchar" MaxLength="150" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="150" />
+          <Property Name="WebsiteURL" Type="nvarchar" MaxLength="150" />
+          <Property Name="AccommodationType" Type="nvarchar" MaxLength="10" />
+          <Property Name="IsRailInd" Type="bit" />
+          <Property Name="AccommodationCategoryWeb" Type="nvarchar" MaxLength="10" />
+          <Property Name="SerialNo_Country" Type="int" />
+          <Property Name="Country_Code" Type="nvarchar" MaxLength="4" />
+          <Property Name="State_Code" Type="nvarchar" MaxLength="4" />
+          <Property Name="WebShortText" Type="nvarchar(max)" />
+          <Property Name="CMS_ThumbnailImagePath" Type="nvarchar" MaxLength="250" />
+          <Property Name="IntroText" Type="nvarchar(max)" />
+          <Property Name="MetaDescription" Type="nvarchar" MaxLength="2000" />
+          <Property Name="ImageCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="TagName" Type="nvarchar" MaxLength="50" />
+          <Property Name="MetaKeyword" Type="nvarchar" MaxLength="2000" />
+          <Property Name="GuidelinePriceNotes" Type="nvarchar" MaxLength="250" />
+          <Property Name="SerialNo_Featured" Type="int" />
+        </EntityType>
+        <EntityType Name="SlateDetailsTable">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SlateID" Type="nvarchar" MaxLength="50" />
+          <Property Name="ClientID" Type="nvarchar" MaxLength="50" />
+          <Property Name="State" Type="nvarchar(max)" />
+          <Property Name="ChannelName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityContainer Name="SlateMasterModelStoreContainer">
+          <EntitySet Name="Channel_Slate_details" EntityType="Self.Channel_Slate_details" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Hotel" EntityType="Self.Hotel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SlateDetailsTable" EntityType="Self.SlateDetailsTable" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SlateMasterModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="City_Code" />
+          </Key>
+          <Property Name="City_Code" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="City_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="State_Code" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="Country_Code" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="Alias" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="CrUId" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="CrDate" Type="DateTime" Precision="3" />
+          <Property Name="CrTime" Type="DateTime" Precision="3" />
+          <Property Name="FrzInd" Type="Boolean" Nullable="false" />
+          <Property Name="UpUId" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="UpDate" Type="DateTime" Precision="3" />
+          <Property Name="UpTime" Type="DateTime" Precision="3" />
+          <Property Name="UpPlace" Type="String" MaxLength="18" FixedLength="false" Unicode="true" />
+          <Property Name="TextBlock" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="PathToText" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="STD_Code" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="City_Code_No" Type="Int32" />
+          <Property Name="TextBlockShort" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="TextBlockLong" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="PathToImage" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Region_Code" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="ClientNotes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OpsNotes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SupplierNotes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Approved" Type="Boolean" />
+          <Property Name="Questions" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LongNotes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ShortNotes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OurOpinionNotes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SalesTipNotes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FactSheetNotes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AutoInvoiceRemark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="SeqNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="City_Code_Crs" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="GMapLat" Type="Double" />
+          <Property Name="GMapLng" Type="Double" />
+          <Property Name="ShowOnWebInd" Type="Boolean" />
+          <Property Name="IsHub" Type="Boolean" Nullable="false" />
+          <Property Name="RegionCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="DepTaxText" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="WebPageTitle" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="WebsiteImagePathName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="IsCapitalCity" Type="Boolean" Nullable="false" />
+          <Property Name="CapitalInd" Type="Boolean" Nullable="false" />
+          <Property Name="City_Code_Linked" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="URLFriendlyName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="IsBoatInd" Type="Boolean" Nullable="false" />
+          <Property Name="AccommodationLabelOnWeb" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="URLFriendlyNameTemp" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="UseGroupNameInd" Type="Boolean" />
+          <Property Name="ImagesSourcedInd" Type="Boolean" />
+          <Property Name="ImagesSourcedBy" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="ImagesSourcedOn" Type="DateTime" Precision="3" />
+          <Property Name="n465x380" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="n465x380_ImgCnt" Type="Int32" />
+          <Property Name="n1460x640" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="n1460x640_ImgCnt" Type="Int32" />
+          <Property Name="Email" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="WebPageLink" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="n620x380" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="n620x380_ImgCnt" Type="Int32" />
+          <Property Name="GroupName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SerialNo" Type="Int16" />
+          <Property Name="City_Code_ISO" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="IsCapital" Type="Boolean" Nullable="false" />
+          <Property Name="Capital" Type="Boolean" Nullable="false" />
+          <Property Name="WebsiteUrl" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Serial_No" Type="Int32" />
+          <Property Name="CityType_Code" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="IsBoatCity" Type="Boolean" Nullable="false" />
+          <Property Name="C1460x640" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="WebShortText" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="city_name_web" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="HotelListHeading" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ThumbnailImagePath" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ThumbnailImageAlt" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MetaDescription" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="MetaKeyword" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="ImageCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CMS_ThumbnailImagePath" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="TourListHeading" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ApplyToAllRegion" Type="Boolean" />
+          <Property Name="IsFeaturedInd" Type="Boolean" />
+          <Property Name="RegionListHeader" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SerialNo_Featured" Type="Int32" />
+          <Property Name="ShowOnCountryInd" Type="Boolean" />
+          <Property Name="ShowOnHotelInd" Type="Boolean" />
+          <Property Name="SerialNoOnCountry" Type="Int16" />
+          <Property Name="SerialNoOnHotel" Type="Int16" />
+          <Property Name="NameOnWebCountry" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NameOnWebHotel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NameOnWebItinerary" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="InspirationListHeader" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="Country_Code" />
+          </Key>
+          <Property Name="Country_Code" Type="String" MaxLength="4" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Country_Name" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="MinNoOfDays" Type="Int16" />
+          <Property Name="CrUId" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="CrDate" Type="DateTime" Precision="3" />
+          <Property Name="CrTime" Type="DateTime" Precision="3" />
+          <Property Name="FrzInd" Type="Boolean" Nullable="false" />
+          <Property Name="UpUId" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="UpDate" Type="DateTime" Precision="3" />
+          <Property Name="UpTime" Type="DateTime" Precision="3" />
+          <Property Name="UpPlace" Type="String" MaxLength="18" FixedLength="false" Unicode="true" />
+          <Property Name="ISD_Code" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Telex_Code" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="MinGrpVisaSize" Type="Int16" />
+          <Property Name="PassValidMonth" Type="Int16" />
+          <Property Name="Interest_Short_Code" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="TextBlockLong" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="TextBlockShort" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="PathToImage" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ManagerUId" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="LongNotes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ShortNotes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OurOpinionNotes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SalesTipNotes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FactSheetNotes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PassportBeforeTime" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="AutoInvoiceRemark" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SeqNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VisaNotes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CheckinLetterDocName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="CheckinLetterDocRank" Type="Int32" />
+          <Property Name="OccupationMandatoryForVisa" Type="Boolean" Nullable="false" />
+          <Property Name="TimeDiffToGMT" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="ISOCode" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="WebsitePageCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ShowOnWebInd" Type="Boolean" />
+          <Property Name="Interest_Short_Code_Web" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DepTaxText" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="WebPageTitle" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="UseRegionOrCityInFIT" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="OnSaleInd" Type="Boolean" Nullable="false" />
+          <Property Name="CheckInLetterDocName_2010" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="WebPageTitle_Tours" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="WebsiteImagePathName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ISOName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="TeamName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="EUInd" Type="Boolean" />
+          <Property Name="SellingType" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SerialNo" Type="Int32" />
+          <Property Name="City_Code_Capital" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="country_name_web" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="country_name_menu" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="DetailPDFPathName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="ShowHolidayIdeas1" Type="Boolean" />
+          <Property Name="ShowHolidayIdeas2" Type="Boolean" />
+          <Property Name="ShowHolidayIdeas3" Type="Boolean" />
+          <Property Name="WebsiteToHotelInd" Type="Boolean" />
+          <Property Name="URLFriendlyName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="URLFriendlyNameForCountryHolidays" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ShowOnOnlineAddress" Type="Boolean" />
+          <Property Name="UseAllBoatTemplate" Type="Boolean" />
+          <Property Name="ShowMapInd" Type="Boolean" />
+          <Property Name="ShowOnWebGrpEnquiryInd" Type="Boolean" />
+          <Property Name="SerialNoOnlineAddress" Type="Int32" />
+          <Property Name="ISO3Code" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="ImagesSourcedInd" Type="Boolean" />
+          <Property Name="ImagesSourcedBy" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="ImagesSourcedOn" Type="DateTime" Precision="3" />
+          <Property Name="n465x380" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="n465x380_ImgCnt" Type="Int32" />
+          <Property Name="n1460x640" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="n1460x640_ImgCnt" Type="Int32" />
+          <Property Name="Email" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="WebPageLink" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="UseGroupNameInd" Type="Boolean" />
+          <Property Name="ShowCountryInfoTabsInd" Type="Boolean" />
+          <Property Name="WebPageTitle_Interest" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CountryNameForImgPath" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Country_Code_Domicile" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="WebShortText" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ThumbnailImagePath" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ThumbnailImageAlt" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="AllowExpert" Type="Boolean" />
+          <Property Name="MetaDescription" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="MetaKeyword" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="IsDirectToHotelInd" Type="Boolean" />
+          <Property Name="AmazonURL" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="WebsiteURL" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="ImageCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CMS_ThumbnailImagePath" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="TourListHeading" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CountryExpListHeading" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="ApplyToAllRegion" Type="Boolean" />
+          <Property Name="IsForthComingInd" Type="Boolean" />
+          <Property Name="ExcursionListHeading" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="HotelListHeading" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="OfferListHeading" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="WebPageTitle_Gallery" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="MetaDescription_Gallery" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="Metakeyword_Gallery" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="InspirationListHeader" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IsFeaturedInd" Type="Boolean" />
+          <Property Name="SerialNo_Featured" Type="Int32" />
+          <Property Name="CityListHeader" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="GMapLat" Type="Double" />
+          <Property Name="GMapLng" Type="Double" />
+        </EntityType>
+        <EntityType Name="Hotel">
+          <Key>
+            <PropertyRef Name="Hotel_Code" />
+          </Key>
+          <Property Name="Hotel_Code" Type="Int32" Nullable="false" />
+          <Property Name="Hotel_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ShortName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="City_Code" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TextBlockLong" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="PathToTextLong" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CrUId" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="CrDate" Type="DateTime" Precision="3" />
+          <Property Name="CrTime" Type="DateTime" Precision="3" />
+          <Property Name="FrzInd" Type="Boolean" Nullable="false" />
+          <Property Name="UpUId" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="UpDate" Type="DateTime" Precision="3" />
+          <Property Name="UpTime" Type="DateTime" Precision="3" />
+          <Property Name="UpPlace" Type="String" MaxLength="18" FixedLength="false" Unicode="true" />
+          <Property Name="SerialNo" Type="Int16" />
+          <Property Name="BClass_Code" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="CheckIn" Type="DateTime" Precision="3" />
+          <Property Name="CheckOut" Type="DateTime" Precision="3" />
+          <Property Name="Add1" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="Add2" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="Add3" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Zip" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="AgentInd" Type="Boolean" Nullable="false" />
+          <Property Name="GroupName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Keyword" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="HostRating" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="HotelRating" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="HostPref" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="TextBlockShort" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="PathToTextShort" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PathToImage" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ClientNotes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OpsNotes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SupplierNotes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Approved" Type="Boolean" />
+          <Property Name="Questions" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LongNotes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ShortNotes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OurOpinionNotes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SalesTipNotes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FactSheetNotes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LastVisitedDate" Type="DateTime" Precision="3" />
+          <Property Name="GMapLat" Type="Double" />
+          <Property Name="GMapLng" Type="Double" />
+          <Property Name="ShowOnWebInd" Type="Boolean" />
+          <Property Name="NoOfRooms" Type="Int32" />
+          <Property Name="NotesSeason" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="WebPageTitle" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="IsBoatInd" Type="Boolean" />
+          <Property Name="MealBasis_Code_Short" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="IsFeaturedInd" Type="Boolean" />
+          <Property Name="HotelFormatInItinerary" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="URLFriendlyName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Hotel_Code_Link" Type="Int32" />
+          <Property Name="URLFriendlyNameTemp" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="UseForDummyItinerary" Type="Boolean" />
+          <Property Name="WebOfferMemo" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="ShowOfferOnWebInd" Type="Boolean" />
+          <Property Name="ShowOfferOnDate" Type="DateTime" Precision="3" />
+          <Property Name="ShowOfferToDate" Type="DateTime" Precision="3" />
+          <Property Name="WebOfferShortText" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="HotelCode" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SerialNo_City" Type="Int32" />
+          <Property Name="hotel_name_web" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ThumbnailImagePath" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ThumbnailImageAlt" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="WebsiteURL" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="AccommodationType" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="IsRailInd" Type="Boolean" />
+          <Property Name="AccommodationCategoryWeb" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="SerialNo_Country" Type="Int32" />
+          <Property Name="Country_Code" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="State_Code" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="WebShortText" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CMS_ThumbnailImagePath" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="IntroText" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MetaDescription" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="ImageCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TagName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MetaKeyword" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="GuidelinePriceNotes" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="SerialNo_Featured" Type="Int32" />
+        </EntityType>
+        <EntityType Name="SlateDetailsTable">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SlateID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ClientID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="State" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ChannelName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="SlateMasterEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Cities" EntityType="Self.City" />
+          <EntitySet Name="Countries" EntityType="Self.Country" />
+          <EntitySet Name="Hotels" EntityType="Self.Hotel" />
+          <EntitySet Name="SlateDetailsTables" EntityType="Self.SlateDetailsTable" />
+          <EntitySet Name="Channel_Slate_details" EntityType="SlateMasterModel.Channel_Slate_details" />
+        </EntityContainer>
+        <EntityType Name="Channel_Slate_details">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SlateID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ChannelName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SlateMasterModelStoreContainer" CdmEntityContainer="SlateMasterEntities">
+          <EntitySetMapping Name="Cities">
+            <EntityTypeMapping TypeName="SlateMasterModel.City">
+              <MappingFragment StoreEntitySet="City">
+                <ScalarProperty Name="City_Code" ColumnName="City_Code" />
+                <ScalarProperty Name="City_Name" ColumnName="City_Name" />
+                <ScalarProperty Name="State_Code" ColumnName="State_Code" />
+                <ScalarProperty Name="Country_Code" ColumnName="Country_Code" />
+                <ScalarProperty Name="Alias" ColumnName="Alias" />
+                <ScalarProperty Name="CrUId" ColumnName="CrUId" />
+                <ScalarProperty Name="CrDate" ColumnName="CrDate" />
+                <ScalarProperty Name="CrTime" ColumnName="CrTime" />
+                <ScalarProperty Name="FrzInd" ColumnName="FrzInd" />
+                <ScalarProperty Name="UpUId" ColumnName="UpUId" />
+                <ScalarProperty Name="UpDate" ColumnName="UpDate" />
+                <ScalarProperty Name="UpTime" ColumnName="UpTime" />
+                <ScalarProperty Name="UpPlace" ColumnName="UpPlace" />
+                <ScalarProperty Name="TextBlock" ColumnName="TextBlock" />
+                <ScalarProperty Name="PathToText" ColumnName="PathToText" />
+                <ScalarProperty Name="STD_Code" ColumnName="STD_Code" />
+                <ScalarProperty Name="City_Code_No" ColumnName="City_Code_No" />
+                <ScalarProperty Name="TextBlockShort" ColumnName="TextBlockShort" />
+                <ScalarProperty Name="TextBlockLong" ColumnName="TextBlockLong" />
+                <ScalarProperty Name="PathToImage" ColumnName="PathToImage" />
+                <ScalarProperty Name="Region_Code" ColumnName="Region_Code" />
+                <ScalarProperty Name="ClientNotes" ColumnName="ClientNotes" />
+                <ScalarProperty Name="OpsNotes" ColumnName="OpsNotes" />
+                <ScalarProperty Name="SupplierNotes" ColumnName="SupplierNotes" />
+                <ScalarProperty Name="Approved" ColumnName="Approved" />
+                <ScalarProperty Name="Questions" ColumnName="Questions" />
+                <ScalarProperty Name="LongNotes" ColumnName="LongNotes" />
+                <ScalarProperty Name="ShortNotes" ColumnName="ShortNotes" />
+                <ScalarProperty Name="OurOpinionNotes" ColumnName="OurOpinionNotes" />
+                <ScalarProperty Name="SalesTipNotes" ColumnName="SalesTipNotes" />
+                <ScalarProperty Name="FactSheetNotes" ColumnName="FactSheetNotes" />
+                <ScalarProperty Name="AutoInvoiceRemark" ColumnName="AutoInvoiceRemark" />
+                <ScalarProperty Name="SeqNo" ColumnName="SeqNo" />
+                <ScalarProperty Name="City_Code_Crs" ColumnName="City_Code_Crs" />
+                <ScalarProperty Name="GMapLat" ColumnName="GMapLat" />
+                <ScalarProperty Name="GMapLng" ColumnName="GMapLng" />
+                <ScalarProperty Name="ShowOnWebInd" ColumnName="ShowOnWebInd" />
+                <ScalarProperty Name="IsHub" ColumnName="IsHub" />
+                <ScalarProperty Name="RegionCode" ColumnName="RegionCode" />
+                <ScalarProperty Name="DepTaxText" ColumnName="DepTaxText" />
+                <ScalarProperty Name="WebPageTitle" ColumnName="WebPageTitle" />
+                <ScalarProperty Name="WebsiteImagePathName" ColumnName="WebsiteImagePathName" />
+                <ScalarProperty Name="IsCapitalCity" ColumnName="IsCapitalCity" />
+                <ScalarProperty Name="CapitalInd" ColumnName="CapitalInd" />
+                <ScalarProperty Name="City_Code_Linked" ColumnName="City_Code_Linked" />
+                <ScalarProperty Name="URLFriendlyName" ColumnName="URLFriendlyName" />
+                <ScalarProperty Name="IsBoatInd" ColumnName="IsBoatInd" />
+                <ScalarProperty Name="AccommodationLabelOnWeb" ColumnName="AccommodationLabelOnWeb" />
+                <ScalarProperty Name="URLFriendlyNameTemp" ColumnName="URLFriendlyNameTemp" />
+                <ScalarProperty Name="UseGroupNameInd" ColumnName="UseGroupNameInd" />
+                <ScalarProperty Name="ImagesSourcedInd" ColumnName="ImagesSourcedInd" />
+                <ScalarProperty Name="ImagesSourcedBy" ColumnName="ImagesSourcedBy" />
+                <ScalarProperty Name="ImagesSourcedOn" ColumnName="ImagesSourcedOn" />
+                <ScalarProperty Name="n465x380" ColumnName="n465x380" />
+                <ScalarProperty Name="n465x380_ImgCnt" ColumnName="n465x380_ImgCnt" />
+                <ScalarProperty Name="n1460x640" ColumnName="n1460x640" />
+                <ScalarProperty Name="n1460x640_ImgCnt" ColumnName="n1460x640_ImgCnt" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="WebPageLink" ColumnName="WebPageLink" />
+                <ScalarProperty Name="n620x380" ColumnName="n620x380" />
+                <ScalarProperty Name="n620x380_ImgCnt" ColumnName="n620x380_ImgCnt" />
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+                <ScalarProperty Name="SerialNo" ColumnName="SerialNo" />
+                <ScalarProperty Name="City_Code_ISO" ColumnName="City_Code_ISO" />
+                <ScalarProperty Name="IsCapital" ColumnName="IsCapital" />
+                <ScalarProperty Name="Capital" ColumnName="Capital" />
+                <ScalarProperty Name="WebsiteUrl" ColumnName="WebsiteUrl" />
+                <ScalarProperty Name="Serial_No" ColumnName="Serial_No" />
+                <ScalarProperty Name="CityType_Code" ColumnName="CityType_Code" />
+                <ScalarProperty Name="IsBoatCity" ColumnName="IsBoatCity" />
+                <ScalarProperty Name="C1460x640" ColumnName="1460x640" />
+                <ScalarProperty Name="WebShortText" ColumnName="WebShortText" />
+                <ScalarProperty Name="city_name_web" ColumnName="city_name_web" />
+                <ScalarProperty Name="HotelListHeading" ColumnName="HotelListHeading" />
+                <ScalarProperty Name="ThumbnailImagePath" ColumnName="ThumbnailImagePath" />
+                <ScalarProperty Name="ThumbnailImageAlt" ColumnName="ThumbnailImageAlt" />
+                <ScalarProperty Name="MetaDescription" ColumnName="MetaDescription" />
+                <ScalarProperty Name="MetaKeyword" ColumnName="MetaKeyword" />
+                <ScalarProperty Name="ImageCode" ColumnName="ImageCode" />
+                <ScalarProperty Name="CMS_ThumbnailImagePath" ColumnName="CMS_ThumbnailImagePath" />
+                <ScalarProperty Name="TourListHeading" ColumnName="TourListHeading" />
+                <ScalarProperty Name="ApplyToAllRegion" ColumnName="ApplyToAllRegion" />
+                <ScalarProperty Name="IsFeaturedInd" ColumnName="IsFeaturedInd" />
+                <ScalarProperty Name="RegionListHeader" ColumnName="RegionListHeader" />
+                <ScalarProperty Name="SerialNo_Featured" ColumnName="SerialNo_Featured" />
+                <ScalarProperty Name="ShowOnCountryInd" ColumnName="ShowOnCountryInd" />
+                <ScalarProperty Name="ShowOnHotelInd" ColumnName="ShowOnHotelInd" />
+                <ScalarProperty Name="SerialNoOnCountry" ColumnName="SerialNoOnCountry" />
+                <ScalarProperty Name="SerialNoOnHotel" ColumnName="SerialNoOnHotel" />
+                <ScalarProperty Name="NameOnWebCountry" ColumnName="NameOnWebCountry" />
+                <ScalarProperty Name="NameOnWebHotel" ColumnName="NameOnWebHotel" />
+                <ScalarProperty Name="NameOnWebItinerary" ColumnName="NameOnWebItinerary" />
+                <ScalarProperty Name="InspirationListHeader" ColumnName="InspirationListHeader" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Countries">
+            <EntityTypeMapping TypeName="SlateMasterModel.Country">
+              <MappingFragment StoreEntitySet="Country">
+                <ScalarProperty Name="Country_Code" ColumnName="Country_Code" />
+                <ScalarProperty Name="Country_Name" ColumnName="Country_Name" />
+                <ScalarProperty Name="MinNoOfDays" ColumnName="MinNoOfDays" />
+                <ScalarProperty Name="CrUId" ColumnName="CrUId" />
+                <ScalarProperty Name="CrDate" ColumnName="CrDate" />
+                <ScalarProperty Name="CrTime" ColumnName="CrTime" />
+                <ScalarProperty Name="FrzInd" ColumnName="FrzInd" />
+                <ScalarProperty Name="UpUId" ColumnName="UpUId" />
+                <ScalarProperty Name="UpDate" ColumnName="UpDate" />
+                <ScalarProperty Name="UpTime" ColumnName="UpTime" />
+                <ScalarProperty Name="UpPlace" ColumnName="UpPlace" />
+                <ScalarProperty Name="ISD_Code" ColumnName="ISD_Code" />
+                <ScalarProperty Name="Telex_Code" ColumnName="Telex_Code" />
+                <ScalarProperty Name="MinGrpVisaSize" ColumnName="MinGrpVisaSize" />
+                <ScalarProperty Name="PassValidMonth" ColumnName="PassValidMonth" />
+                <ScalarProperty Name="Interest_Short_Code" ColumnName="Interest_Short_Code" />
+                <ScalarProperty Name="TextBlockLong" ColumnName="TextBlockLong" />
+                <ScalarProperty Name="TextBlockShort" ColumnName="TextBlockShort" />
+                <ScalarProperty Name="PathToImage" ColumnName="PathToImage" />
+                <ScalarProperty Name="ManagerUId" ColumnName="ManagerUId" />
+                <ScalarProperty Name="LongNotes" ColumnName="LongNotes" />
+                <ScalarProperty Name="ShortNotes" ColumnName="ShortNotes" />
+                <ScalarProperty Name="OurOpinionNotes" ColumnName="OurOpinionNotes" />
+                <ScalarProperty Name="SalesTipNotes" ColumnName="SalesTipNotes" />
+                <ScalarProperty Name="FactSheetNotes" ColumnName="FactSheetNotes" />
+                <ScalarProperty Name="PassportBeforeTime" ColumnName="PassportBeforeTime" />
+                <ScalarProperty Name="AutoInvoiceRemark" ColumnName="AutoInvoiceRemark" />
+                <ScalarProperty Name="SeqNo" ColumnName="SeqNo" />
+                <ScalarProperty Name="VisaNotes" ColumnName="VisaNotes" />
+                <ScalarProperty Name="CheckinLetterDocName" ColumnName="CheckinLetterDocName" />
+                <ScalarProperty Name="CheckinLetterDocRank" ColumnName="CheckinLetterDocRank" />
+                <ScalarProperty Name="OccupationMandatoryForVisa" ColumnName="OccupationMandatoryForVisa" />
+                <ScalarProperty Name="TimeDiffToGMT" ColumnName="TimeDiffToGMT" />
+                <ScalarProperty Name="ISOCode" ColumnName="ISOCode" />
+                <ScalarProperty Name="WebsitePageCode" ColumnName="WebsitePageCode" />
+                <ScalarProperty Name="ShowOnWebInd" ColumnName="ShowOnWebInd" />
+                <ScalarProperty Name="Interest_Short_Code_Web" ColumnName="Interest_Short_Code_Web" />
+                <ScalarProperty Name="DepTaxText" ColumnName="DepTaxText" />
+                <ScalarProperty Name="WebPageTitle" ColumnName="WebPageTitle" />
+                <ScalarProperty Name="UseRegionOrCityInFIT" ColumnName="UseRegionOrCityInFIT" />
+                <ScalarProperty Name="OnSaleInd" ColumnName="OnSaleInd" />
+                <ScalarProperty Name="CheckInLetterDocName_2010" ColumnName="CheckInLetterDocName_2010" />
+                <ScalarProperty Name="WebPageTitle_Tours" ColumnName="WebPageTitle_Tours" />
+                <ScalarProperty Name="WebsiteImagePathName" ColumnName="WebsiteImagePathName" />
+                <ScalarProperty Name="ISOName" ColumnName="ISOName" />
+                <ScalarProperty Name="TeamName" ColumnName="TeamName" />
+                <ScalarProperty Name="EUInd" ColumnName="EUInd" />
+                <ScalarProperty Name="SellingType" ColumnName="SellingType" />
+                <ScalarProperty Name="SerialNo" ColumnName="SerialNo" />
+                <ScalarProperty Name="City_Code_Capital" ColumnName="City_Code_Capital" />
+                <ScalarProperty Name="country_name_web" ColumnName="country_name_web" />
+                <ScalarProperty Name="country_name_menu" ColumnName="country_name_menu" />
+                <ScalarProperty Name="DetailPDFPathName" ColumnName="DetailPDFPathName" />
+                <ScalarProperty Name="ShowHolidayIdeas1" ColumnName="ShowHolidayIdeas1" />
+                <ScalarProperty Name="ShowHolidayIdeas2" ColumnName="ShowHolidayIdeas2" />
+                <ScalarProperty Name="ShowHolidayIdeas3" ColumnName="ShowHolidayIdeas3" />
+                <ScalarProperty Name="WebsiteToHotelInd" ColumnName="WebsiteToHotelInd" />
+                <ScalarProperty Name="URLFriendlyName" ColumnName="URLFriendlyName" />
+                <ScalarProperty Name="URLFriendlyNameForCountryHolidays" ColumnName="URLFriendlyNameForCountryHolidays" />
+                <ScalarProperty Name="ShowOnOnlineAddress" ColumnName="ShowOnOnlineAddress" />
+                <ScalarProperty Name="UseAllBoatTemplate" ColumnName="UseAllBoatTemplate" />
+                <ScalarProperty Name="ShowMapInd" ColumnName="ShowMapInd" />
+                <ScalarProperty Name="ShowOnWebGrpEnquiryInd" ColumnName="ShowOnWebGrpEnquiryInd" />
+                <ScalarProperty Name="SerialNoOnlineAddress" ColumnName="SerialNoOnlineAddress" />
+                <ScalarProperty Name="ISO3Code" ColumnName="ISO3Code" />
+                <ScalarProperty Name="ImagesSourcedInd" ColumnName="ImagesSourcedInd" />
+                <ScalarProperty Name="ImagesSourcedBy" ColumnName="ImagesSourcedBy" />
+                <ScalarProperty Name="ImagesSourcedOn" ColumnName="ImagesSourcedOn" />
+                <ScalarProperty Name="n465x380" ColumnName="n465x380" />
+                <ScalarProperty Name="n465x380_ImgCnt" ColumnName="n465x380_ImgCnt" />
+                <ScalarProperty Name="n1460x640" ColumnName="n1460x640" />
+                <ScalarProperty Name="n1460x640_ImgCnt" ColumnName="n1460x640_ImgCnt" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="WebPageLink" ColumnName="WebPageLink" />
+                <ScalarProperty Name="UseGroupNameInd" ColumnName="UseGroupNameInd" />
+                <ScalarProperty Name="ShowCountryInfoTabsInd" ColumnName="ShowCountryInfoTabsInd" />
+                <ScalarProperty Name="WebPageTitle_Interest" ColumnName="WebPageTitle_Interest" />
+                <ScalarProperty Name="CountryNameForImgPath" ColumnName="CountryNameForImgPath" />
+                <ScalarProperty Name="Country_Code_Domicile" ColumnName="Country_Code_Domicile" />
+                <ScalarProperty Name="WebShortText" ColumnName="WebShortText" />
+                <ScalarProperty Name="ThumbnailImagePath" ColumnName="ThumbnailImagePath" />
+                <ScalarProperty Name="ThumbnailImageAlt" ColumnName="ThumbnailImageAlt" />
+                <ScalarProperty Name="AllowExpert" ColumnName="AllowExpert" />
+                <ScalarProperty Name="MetaDescription" ColumnName="MetaDescription" />
+                <ScalarProperty Name="MetaKeyword" ColumnName="MetaKeyword" />
+                <ScalarProperty Name="IsDirectToHotelInd" ColumnName="IsDirectToHotelInd" />
+                <ScalarProperty Name="AmazonURL" ColumnName="AmazonURL" />
+                <ScalarProperty Name="WebsiteURL" ColumnName="WebsiteURL" />
+                <ScalarProperty Name="ImageCode" ColumnName="ImageCode" />
+                <ScalarProperty Name="CMS_ThumbnailImagePath" ColumnName="CMS_ThumbnailImagePath" />
+                <ScalarProperty Name="TourListHeading" ColumnName="TourListHeading" />
+                <ScalarProperty Name="CountryExpListHeading" ColumnName="CountryExpListHeading" />
+                <ScalarProperty Name="ApplyToAllRegion" ColumnName="ApplyToAllRegion" />
+                <ScalarProperty Name="IsForthComingInd" ColumnName="IsForthComingInd" />
+                <ScalarProperty Name="ExcursionListHeading" ColumnName="ExcursionListHeading" />
+                <ScalarProperty Name="HotelListHeading" ColumnName="HotelListHeading" />
+                <ScalarProperty Name="OfferListHeading" ColumnName="OfferListHeading" />
+                <ScalarProperty Name="WebPageTitle_Gallery" ColumnName="WebPageTitle_Gallery" />
+                <ScalarProperty Name="MetaDescription_Gallery" ColumnName="MetaDescription_Gallery" />
+                <ScalarProperty Name="Metakeyword_Gallery" ColumnName="Metakeyword_Gallery" />
+                <ScalarProperty Name="InspirationListHeader" ColumnName="InspirationListHeader" />
+                <ScalarProperty Name="IsFeaturedInd" ColumnName="IsFeaturedInd" />
+                <ScalarProperty Name="SerialNo_Featured" ColumnName="SerialNo_Featured" />
+                <ScalarProperty Name="CityListHeader" ColumnName="CityListHeader" />
+                <ScalarProperty Name="GMapLat" ColumnName="GMapLat" />
+                <ScalarProperty Name="GMapLng" ColumnName="GMapLng" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Hotels">
+            <EntityTypeMapping TypeName="SlateMasterModel.Hotel">
+              <MappingFragment StoreEntitySet="Hotel">
+                <ScalarProperty Name="Hotel_Code" ColumnName="Hotel_Code" />
+                <ScalarProperty Name="Hotel_Name" ColumnName="Hotel_Name" />
+                <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+                <ScalarProperty Name="City_Code" ColumnName="City_Code" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="TextBlockLong" ColumnName="TextBlockLong" />
+                <ScalarProperty Name="PathToTextLong" ColumnName="PathToTextLong" />
+                <ScalarProperty Name="CrUId" ColumnName="CrUId" />
+                <ScalarProperty Name="CrDate" ColumnName="CrDate" />
+                <ScalarProperty Name="CrTime" ColumnName="CrTime" />
+                <ScalarProperty Name="FrzInd" ColumnName="FrzInd" />
+                <ScalarProperty Name="UpUId" ColumnName="UpUId" />
+                <ScalarProperty Name="UpDate" ColumnName="UpDate" />
+                <ScalarProperty Name="UpTime" ColumnName="UpTime" />
+                <ScalarProperty Name="UpPlace" ColumnName="UpPlace" />
+                <ScalarProperty Name="SerialNo" ColumnName="SerialNo" />
+                <ScalarProperty Name="BClass_Code" ColumnName="BClass_Code" />
+                <ScalarProperty Name="CheckIn" ColumnName="CheckIn" />
+                <ScalarProperty Name="CheckOut" ColumnName="CheckOut" />
+                <ScalarProperty Name="Add1" ColumnName="Add1" />
+                <ScalarProperty Name="Add2" ColumnName="Add2" />
+                <ScalarProperty Name="Add3" ColumnName="Add3" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Zip" ColumnName="Zip" />
+                <ScalarProperty Name="AgentInd" ColumnName="AgentInd" />
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+                <ScalarProperty Name="Keyword" ColumnName="Keyword" />
+                <ScalarProperty Name="HostRating" ColumnName="HostRating" />
+                <ScalarProperty Name="HotelRating" ColumnName="HotelRating" />
+                <ScalarProperty Name="HostPref" ColumnName="HostPref" />
+                <ScalarProperty Name="TextBlockShort" ColumnName="TextBlockShort" />
+                <ScalarProperty Name="PathToTextShort" ColumnName="PathToTextShort" />
+                <ScalarProperty Name="PathToImage" ColumnName="PathToImage" />
+                <ScalarProperty Name="ClientNotes" ColumnName="ClientNotes" />
+                <ScalarProperty Name="OpsNotes" ColumnName="OpsNotes" />
+                <ScalarProperty Name="SupplierNotes" ColumnName="SupplierNotes" />
+                <ScalarProperty Name="Approved" ColumnName="Approved" />
+                <ScalarProperty Name="Questions" ColumnName="Questions" />
+                <ScalarProperty Name="LongNotes" ColumnName="LongNotes" />
+                <ScalarProperty Name="ShortNotes" ColumnName="ShortNotes" />
+                <ScalarProperty Name="OurOpinionNotes" ColumnName="OurOpinionNotes" />
+                <ScalarProperty Name="SalesTipNotes" ColumnName="SalesTipNotes" />
+                <ScalarProperty Name="FactSheetNotes" ColumnName="FactSheetNotes" />
+                <ScalarProperty Name="LastVisitedDate" ColumnName="LastVisitedDate" />
+                <ScalarProperty Name="GMapLat" ColumnName="GMapLat" />
+                <ScalarProperty Name="GMapLng" ColumnName="GMapLng" />
+                <ScalarProperty Name="ShowOnWebInd" ColumnName="ShowOnWebInd" />
+                <ScalarProperty Name="NoOfRooms" ColumnName="NoOfRooms" />
+                <ScalarProperty Name="NotesSeason" ColumnName="NotesSeason" />
+                <ScalarProperty Name="WebPageTitle" ColumnName="WebPageTitle" />
+                <ScalarProperty Name="IsBoatInd" ColumnName="IsBoatInd" />
+                <ScalarProperty Name="MealBasis_Code_Short" ColumnName="MealBasis_Code_Short" />
+                <ScalarProperty Name="IsFeaturedInd" ColumnName="IsFeaturedInd" />
+                <ScalarProperty Name="HotelFormatInItinerary" ColumnName="HotelFormatInItinerary" />
+                <ScalarProperty Name="URLFriendlyName" ColumnName="URLFriendlyName" />
+                <ScalarProperty Name="Hotel_Code_Link" ColumnName="Hotel_Code_Link" />
+                <ScalarProperty Name="URLFriendlyNameTemp" ColumnName="URLFriendlyNameTemp" />
+                <ScalarProperty Name="UseForDummyItinerary" ColumnName="UseForDummyItinerary" />
+                <ScalarProperty Name="WebOfferMemo" ColumnName="WebOfferMemo" />
+                <ScalarProperty Name="ShowOfferOnWebInd" ColumnName="ShowOfferOnWebInd" />
+                <ScalarProperty Name="ShowOfferOnDate" ColumnName="ShowOfferOnDate" />
+                <ScalarProperty Name="ShowOfferToDate" ColumnName="ShowOfferToDate" />
+                <ScalarProperty Name="WebOfferShortText" ColumnName="WebOfferShortText" />
+                <ScalarProperty Name="HotelCode" ColumnName="HotelCode" />
+                <ScalarProperty Name="SerialNo_City" ColumnName="SerialNo_City" />
+                <ScalarProperty Name="hotel_name_web" ColumnName="hotel_name_web" />
+                <ScalarProperty Name="ThumbnailImagePath" ColumnName="ThumbnailImagePath" />
+                <ScalarProperty Name="ThumbnailImageAlt" ColumnName="ThumbnailImageAlt" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="WebsiteURL" ColumnName="WebsiteURL" />
+                <ScalarProperty Name="AccommodationType" ColumnName="AccommodationType" />
+                <ScalarProperty Name="IsRailInd" ColumnName="IsRailInd" />
+                <ScalarProperty Name="AccommodationCategoryWeb" ColumnName="AccommodationCategoryWeb" />
+                <ScalarProperty Name="SerialNo_Country" ColumnName="SerialNo_Country" />
+                <ScalarProperty Name="Country_Code" ColumnName="Country_Code" />
+                <ScalarProperty Name="State_Code" ColumnName="State_Code" />
+                <ScalarProperty Name="WebShortText" ColumnName="WebShortText" />
+                <ScalarProperty Name="CMS_ThumbnailImagePath" ColumnName="CMS_ThumbnailImagePath" />
+                <ScalarProperty Name="IntroText" ColumnName="IntroText" />
+                <ScalarProperty Name="MetaDescription" ColumnName="MetaDescription" />
+                <ScalarProperty Name="ImageCode" ColumnName="ImageCode" />
+                <ScalarProperty Name="TagName" ColumnName="TagName" />
+                <ScalarProperty Name="MetaKeyword" ColumnName="MetaKeyword" />
+                <ScalarProperty Name="GuidelinePriceNotes" ColumnName="GuidelinePriceNotes" />
+                <ScalarProperty Name="SerialNo_Featured" ColumnName="SerialNo_Featured" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SlateDetailsTables">
+            <EntityTypeMapping TypeName="SlateMasterModel.SlateDetailsTable">
+              <MappingFragment StoreEntitySet="SlateDetailsTable">
+                <ScalarProperty Name="ChannelName" ColumnName="ChannelName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="SlateID" ColumnName="SlateID" />
+                <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+                <ScalarProperty Name="State" ColumnName="State" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Channel_Slate_details">
+            <EntityTypeMapping TypeName="SlateMasterModel.Channel_Slate_details">
+              <MappingFragment StoreEntitySet="Channel_Slate_details">
+                <ScalarProperty Name="ChannelName" ColumnName="ChannelName" />
+                <ScalarProperty Name="SlateID" ColumnName="SlateID" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

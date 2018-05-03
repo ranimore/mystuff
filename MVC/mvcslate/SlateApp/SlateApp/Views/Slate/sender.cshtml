@@ -1,0 +1,679 @@
+﻿
+@{
+    ViewBag.Title = "sender";
+}
+
+<link href="~/Content/style.css" rel="stylesheet" />
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="~/scripts/jquery-1.10.2.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="~/scripts/bootstrap.min.js"></script>
+<script src="~/scripts/pubnub.min.js"></script>
+<script src="~/scripts/masonry.js"></script>
+<script src="~/scripts/imagesloaded.js"></script>
+@*<script src="~/scripts/index.js"></script>*@
+<script src="~/scripts/partial.js"></script>
+
+<div class="well row">
+
+
+    <div class="col-md-6">
+        <button onclick="$('#previous').toggle();" class="btn btn-success">Select previous Slate</button>
+        <button onclick="$('#copydiv').toggle();" class="btn btn-success">Copy data from slate</button>
+        <div id="previous" style="display:none">
+            <br />
+            <label class="col-md-4"> Select Slate :</label>
+            <select class="form-control" style="width:30%" id="Selectedslate" onchange="getval(this);">
+                <option disabled selected>--/ Select slate /--</option>
+
+            </select>
+        </div>
+        <div id="copydiv" style="display:none">
+            <br />
+            <label class="col-md-4"> Copy from Slate :</label>
+            <select class="form-control col-md-4" style="width:30%" id="slatelist" onchange="copylist(this);">
+                <option disabled selected>--/ Select slate /--</option>
+            </select>
+            <button class="btn btn-primary btn-xs col-md-offset-1 col-md-2" onclick="copyConfirm()">Copy</button>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <button onclick="$('#new').toggle();" class="btn btn-success">Create new Slate</button>
+        <div id="new" style="display:none">
+            <br />
+            <label class="col-md-4">  Create New Slate</label>
+            <input type="text" class="col-md-5" id="NewSlate" />
+            <button class="btn btn-success btn-xs col-md-2 col-md-offset-1" id="createSlate1" onclick="createSlate()">Create</button>
+        </div>
+    </div>
+</div>
+<div class="col-md-12"><h3 style="color:forestgreen; text-shadow: 1px 1px 4px #88db87;"> Current Slate:<label id="mySlate"></label></h3> </div>
+<script>
+    function copylist(sel) {
+        CopyfromSlate = sel.value;
+    }
+    function copyConfirm() {
+        var toId = $('#mySlate').text();
+        if (toId == '') {
+            alert('Please select current slate..!')
+        }
+        else {
+            if (CopyfromSlate == '') {
+                alert('Please select copy from slate..!')
+            }
+            else {
+                $.post("/Slate/CopySlateData", {
+                    fromId: CopyfromSlate,
+                    toId: toId,
+                    Chname: chat_channel
+                },
+            function (data, status) {
+                if (data == 'NoData') {
+                    alert('No data found')
+                }
+                else {
+                    // document.querySelector('#allcards').innerHTML = '';
+                    data.forEach(function (msg) {
+                        var str = msg.State;
+                        State = JSON.parse(str)
+                        var maindiv = document.querySelector('#allcards');
+                        var msgdiv = document.createElement('div');
+                        msgdiv.className = 'card-view';
+
+                        msgdiv.id = State.Hotel_code;
+                        var html = `<div class="card-view">
+                                <div class='bg'>
+                                <img src="` + State.ThumbnailImagePath + `" alt="company image">
+                                </div>
+                            <div class="container">
+                                <a href='#'><div class="tag_name cyan"></div></a>
+                                <div class="company">
+                                <div class="c_logo">
+                                    <a href="#"><img src="https://s18.postimg.org/fs453bvx1/lo5.gif" alt="Medium"></a>
+                                </div>
+                                <div class="c_info">
+                                    <a href="#" class="c_name">` + State.Hotel_Name + `</a><br>
+                                    <span class="c_industry">` + State.ShortName + `</span><br>
+                                    <span id="c_stars" data-star="` + State.HotelRating + `"></span>
+                                    <div class="c_num">` + State.HotelRating + `</div >
+                                </div>
+                                <div class="c_content">
+                                    <a href='` + State.WebsiteURL + `' class="title" target="_blank"><p> Go to website </p></a>
+                                    <p>` + State.Add1 + `</p>
+                                    <div class="review">` + State.IntroText + `</div>
+                                </div>
+                                </div> <!-- end .company -->
+
+                                <div class="user">
+                                <div class="user_avatar">
+                                    <img src="https://s18.postimg.org/thyoc4j11/image.gif" alt="Ev Williams">
+                                </div>
+                                <div class="user_info">
+                                    <a href="#" class="user_name orange">Evan Williams</a> • May 30, 2015<br>Current Brand Director
+                                </div>
+                                </div> <!-- end .user -->
+                            </div> <!-- end .container -->
+                            </div> <!-- end card -->
+                            `
+                        msgdiv.innerHTML = html;
+                        msgdiv.setAttribute("onload", "fixlayout");
+                        maindiv.appendChild(msgdiv);
+                    })
+                    $('#copydiv').toggle();
+                    var msg = {
+                        slateid: toId,
+                        type: 'slate'
+                    }
+                    pubnub.publish({
+                        message: msg,
+                        // channel: chat_channel
+                        channel: chat_channel
+                    },
+                    function (status, response) {
+
+                    });
+                }
+            })
+            }
+        }
+    }
+    function getval(sel) {
+
+        pubnub.hereNow({
+            //channels: [chat_channel],
+            channels: [chat_channel],
+            includeUUIDs: true,
+            includeState: true
+        },
+          function (status, response) {
+              var count = response.totalOccupancy;
+              if (count > 1) {
+                  var msg = {
+                      slateid: sel.value,
+                      type: 'slate'
+                  }
+                  pubnub.publish({
+                      message: msg,
+                      // channel: chat_channel
+                      channel: chat_channel
+                  },
+                  function (status, response) {
+                      $('#mySlate').text(sel.value);
+                      document.querySelector('#allcards').innerHTML = '';
+                      var sid = $('#mySlate').text();
+                      //  if (slateid != '') { unsubscribeslate(slateid); }
+
+                      slateid = $('#mySlate').text();
+                      //  subscribeslate(slateid);
+                      $('#previous').toggle();
+                      $.get("/Slate/gethistory?id=" + sid + '&Chname=' + chat_channel,
+          function (data, status) {
+              data.forEach(function (msg) {
+                  var str = msg.State;
+                  State = JSON.parse(str)
+                  var maindiv = document.querySelector('#allcards');
+                  var msgdiv = document.createElement('div');
+                  msgdiv.className = 'card-view';
+
+                  msgdiv.id = State.Hotel_code;
+                  var html = `<div class="card-view">
+                                <div class='bg'>
+                                <img src="` + State.ThumbnailImagePath + `" alt="company image">
+                                </div>
+                            <div class="container">
+                                <a href='#'><div class="tag_name cyan"></div></a>
+                                <div class="company">
+                                <div class="c_logo">
+                                    <a href="#"><img src="https://s18.postimg.org/fs453bvx1/lo5.gif" alt="Medium"></a>
+                                </div>
+                                <div class="c_info">
+                                    <a href="#" class="c_name">` + State.Hotel_Name + `</a><br>
+                                    <span class="c_industry">` + State.ShortName + `</span><br>
+                                    <span id="c_stars" data-star="` + State.HotelRating + `"></span>
+                                    <div class="c_num">` + State.HotelRating + `</div >
+                                </div>
+                                <div class="c_content">
+                                    <a href='` + State.WebsiteURL + `' class="title" target="_blank"><p> Go to website </p></a>
+                                    <p>` + State.Add1 + `</p>
+                                    <div class="review">` + State.IntroText + `</div>
+                                </div>
+                                </div> <!-- end .company -->
+
+                                <div class="user">
+                                <div class="user_avatar">
+                                    <img src="https://s18.postimg.org/thyoc4j11/image.gif" alt="Ev Williams">
+                                </div>
+                                <div class="user_info">
+                                    <a href="#" class="user_name orange">Evan Williams</a> • May 30, 2015<br>Current Brand Director
+                                </div>
+                                </div> <!-- end .user -->
+                            </div> <!-- end .container -->
+                            </div> <!-- end card -->
+                            `
+                  msgdiv.innerHTML = html;
+                  msgdiv.setAttribute("onload", "fixlayout");
+                  maindiv.appendChild(msgdiv);
+              })
+          });
+                  });
+              }
+              else {
+                  alert('Receiver not present please try again..!')
+              }
+          })
+
+
+
+    }
+    function createSlate() {
+        //pubnub.hereNow({
+        //    //channels: [chat_channel],
+        //    channels: [chat_channel],
+        //    includeUUIDs: true,
+        //    includeState: true
+        //},
+        // function (status, response) {
+
+        //     var count = response.totalOccupancy;
+        //     if (count > 1) {
+        $.post("/Slate/createSlate", {
+            SlateId: $('#NewSlate').val(),
+            ChannelName: chat_channel
+        },
+   function (data, status) {
+
+       if (data == 'Success') {
+           var newslate = $('#NewSlate').val();
+           $('#mySlate').text(newslate);
+           //    if (slateid != '') { unsubscribeslate(slateid); }
+
+           slateid = $('#mySlate').text();
+           document.querySelector('#allcards').innerHTML = '';
+           //     subscribeslate(slateid);
+           alert("Successfully created ..!");
+           var msg = {
+               slateid: slateid,
+               type: 'slate'
+           }
+           pubnub.publish({
+               message: msg,
+               // channel: chat_channel
+               channel: chat_channel
+           },
+function (status, response) {
+    refreshlist();
+});
+           $('#NewSlate').val('')
+           $('#new').toggle();
+       }
+       else if (data == 'fail') {
+           alert("Slate already present ..!");
+           $('#NewSlate').val('')
+           $('#new').toggle();
+       }
+
+   });
+        //    }
+        //    else {
+        //        alert('Receiver not present .Please try again...!')
+        //    }
+        //});
+
+
+    }
+    function refreshlist() {
+        document.querySelector('#Selectedslate').innerHTML = '';
+        document.querySelector('#slatelist').innerHTML = '';
+        $.get("/Slate/getslatelist?Chname=" + chat_channel,
+function (data, status) {
+    $('#Selectedslate').append($('<option>').text('--/ Select Slate /--').attr('disabled', 'disabled').attr('selected', 'selected'));
+    $('#slatelist').append($('<option>').text('--/ Select Slate /--').attr('disabled', 'disabled').attr('selected', 'selected'));
+    data.forEach(function (msg) {
+        $('#Selectedslate').append($('<option>').text(msg.SlateID).attr('value', msg.SlateID));
+        $('#slatelist').append($('<option>').text(msg.SlateID).attr('value', msg.SlateID));
+    })
+})
+    }
+</script>
+
+<div class="section">
+
+
+    <div class="col-md-3">
+        <div class="panel panel-primary ">
+            <div class="panel-heading">
+                <h3 class="panel-title">Search</h3>
+            </div>
+            <div class="panel-body">
+                <script>
+                    var CopyfromSlate = '';
+                    var selectedcountry = {};
+                    var selectedcity = {};
+                    var selectedhotel = {};
+                    var chat_channel = '';
+                    var slateid = '';
+
+                    var Countrycache = {};
+                    var Citycache = {};
+                    var hotelcache = {};
+                    var url = $(location).attr('href'),
+                        parts = url.split("/"),
+                        last_part = parts[parts.length - 1];
+                    chat_channel = last_part;
+                    //Init & Subscribe
+                    var pubkey = "pub-c-29a5dedd-d503-45ec-bc50-1108adb8f904"; // use your own pub-key
+                    var subkey = "sub-c-c17be706-947f-11e7-9d08-e6614a6757dc"; // use your own sub-key
+                    myUUID = localStorage.getItem('uuid');
+                    if (myUUID == '') {
+                        myUUID = PubNub.generateUUID();
+                        localStorage.setItem('uuid', myUUID);
+                    }
+                    var newUUID = PubNub.generateUUID();
+                    var pubnub = new PubNub({
+                        uuid: myUUID,
+                        subscribeKey: subkey,
+                        publishKey: pubkey,
+                        logVerbosity: false,
+                        ssl: true,
+                        heartbeatInterval: 15,
+                        presenceTimeout: 15
+                    });
+                    $(function () {
+
+
+                        $.get("/Slate/getslatelist?Chname=" + chat_channel,
+            function (data, status) {
+                data.forEach(function (msg) {
+                    $('#Selectedslate').append($('<option>').text(msg.SlateID).attr('value', msg.SlateID));
+                    $('#slatelist').append($('<option>').text(msg.SlateID).attr('value', msg.SlateID));
+                })
+            })
+
+
+                        $("#country").autocomplete({
+
+                            source: function (req, res) {
+                                var term = req.term;
+                                // if (term in Countrycache) {
+                                //     res(Countrycache[term]);
+                                //     return;
+                                // }
+                                selectedcountry = {}
+                                $.get('/Slate/getcountry?name=' + term).done(function (data) {
+                                    coutries = []
+
+                                    for (var i = 0; i < data.length; i++) {
+                                        coutries.push({
+                                            id: data[i].Country_Code,
+                                            value: data[i].Country_Name
+                                        });
+                                    }
+                                    //  Countrycache[term] = coutries;
+                                    res(coutries)
+                                })
+                            },
+                            select: function (event, ui) {
+
+                                selectedcountry.Country_code = ui.item.id;
+                            }
+                        });
+                        $("#city").autocomplete({
+                            source: function (req, res) {
+                                var term = req.term;
+                                // if (term in Citycache) {
+                                //     res(Citycache[term]);
+                                //     return;
+                                // }
+                                selectedcity = {};
+                                if (selectedcountry.Country_code == undefined) {
+                                    alert('Enter valid country..!')
+                                }
+                                else {
+                                    $.get('/Slate/getcity?code=' + selectedcountry.Country_code + '&name=' + term).done(function (data) {
+                                        cities = []
+                                        for (var i = 0; i < data.length; i++) {
+                                            cities.push({
+                                                id: data[i].City_Code,
+                                                value: data[i].City_Name
+                                            });
+                                        }
+                                        // Citycache[term] = cities;
+                                        res(cities)
+                                    })
+                                }
+                            },
+                            select: function (event, ui) {
+
+                                selectedcity.City_Code = ui.item.id;
+                            }
+                        });
+                        $("#hotel").autocomplete({
+                            source: function (req, res) {
+                                var term = req.term;
+
+                                // if (term in hotelcache) {
+                                //     res(hotelcache[term]);
+                                //     return;
+                                // }
+                                selectedhotel = {}
+                                if (selectedcountry.Country_code == undefined) {
+                                    alert('Enter valid country..!')
+                                }
+                                else if (selectedcity.City_Code == undefined) {
+                                    alert('Enter valid city..!')
+                                }
+                                else {
+
+
+                                    $.get('/Slate/gethotel?Countrycode=' + selectedcountry.Country_code + '&Citycode=' + selectedcity.City_Code + '&name=' + term).done(function (data) {
+                                        hotels = []
+                                        for (var i = 0; i < data.length; i++) {
+                                            hotels.push({
+                                                id: data[i].Hotel_Code,
+                                                value: data[i].Hotel_Name
+                                            });
+                                        }
+                                        // hotelcache[term] = hotels;
+                                        res(hotels)
+                                    })
+                                }
+                            },
+                            select: function (event, ui) {
+
+                                selectedhotel.Hotel_Code = ui.item.id;
+                            }
+                        });
+                        $("#details").click(function () {
+                            if (selectedhotel.Hotel_Code == undefined) {
+                                alert('Please enter valid hotel name...!')
+                            }
+                            else {
+                                $.get('/Slate/gethoteldetails?code=' + selectedhotel.Hotel_Code).done(function (data) {
+                                    // var maindiv = document.querySelector('#allcards');
+                                    // var msgdiv = document.createElement('div');
+                                    // msgdiv.className = 'card-view';
+
+                                    // msgdiv.id = data[0].Hotel_Code;
+                                    // msgdiv.setAttribute("onload", "fixlayout");
+                                    // var html = `<div class="card-view">
+                                    //             <div class='bg'>
+                                    //             <img src="` + data[0].ThumbnailImagePath + `" alt="company image">
+                                    //             </div>
+                                    //         <div class="container">
+                                    //             <a href='#'><div class="tag_name cyan"></div></a>
+                                    //             <div class="company">
+                                    //             <div class="c_logo">
+                                    //                 <a href="#"><img src="https://s18.postimg.org/fs453bvx1/lo5.gif" alt="Medium"></a>
+                                    //             </div>
+                                    //             <div class="c_info">
+                                    //                 <a href="#" class="c_name">` + data[0].Hotel_Name + `</a><br>
+                                    //                 <span class="c_industry">` + data[0].ShortName + `</span><br>
+                                    //                 <span id="c_stars" data-star="` + data[0].HotelRating + `"></span>
+                                    //                 <div class="c_num">` + data[0].HotelRating + `</div >
+                                    //             </div>
+                                    //             <div class="c_content">
+                                    //                 <a href='` + data[0].WebsiteURL + `' class="title" target="_blank"><p> Go to website </p></a>
+                                    //                 <p >` + data[0].Add1 + `</p>
+                                    //                 <p class="review">` + data[0].IntroText + `</p>
+                                    //             </div>
+                                    //             </div> <!-- end .company -->
+
+                                    //             <div class="user">
+                                    //             <div class="user_avatar">
+                                    //                 <img src="https://s18.postimg.org/thyoc4j11/image.gif" alt="Ev Williams">
+                                    //             </div>
+                                    //             <div class="user_info">
+                                    //                 <a href="#" class="user_name orange">Evan Williams</a> • May 30, 2015<br>Current Brand Director
+                                    //             </div>
+                                    //             </div> <!-- end .user -->
+                                    //         </div> <!-- end .container -->
+                                    //         </div> <!-- end card -->
+                                    //         `
+                                    //     // var html = '<h1>' + data[0].Hotel_Name + '</h1>'
+                                    // msgdiv.innerHTML = html;
+                                    // maindiv.appendChild(msgdiv);
+
+                                    if (data.length > 0) {
+                                        pubnub.hereNow({
+                                            //channels: [chat_channel],
+                                            channels: [chat_channel],
+                                            includeUUIDs: true,
+                                            includeState: true
+                                        },
+                                            function (status, response) {
+                                                var count = response.totalOccupancy;
+                                                if (count > 1) {
+                                                    var msg = {
+                                                        State: data[0],
+                                                        type: 'state'
+                                                    };
+                                                    pubnub.publish({
+                                                        message: msg,
+                                                        // channel: chat_channel
+                                                        channel: chat_channel
+                                                    },
+                                                        function (status, response) {
+                                                            $('input').val('');
+                                                            if (status.error) {
+                                                                console.log(status);
+                                                            } else {
+
+                                                                //           document.querySelector('#Selectedslate').innerHTML = '';
+                                                                //           $.get("/Slate/getslatelist?Chname=" + chat_channel,
+                                                                //function (data, status) {
+                                                                //    data.forEach(function (msg) {
+                                                                //        $('#Selectedslate').append($('<option>').text(msg.SlateID).attr('value', msg.SlateID));
+                                                                //    })
+                                                                //})
+                                                                console.log("message Published with timetoken", response.timetoken);
+
+
+
+                                                            }
+                                                        }
+                                                    );
+                                                } else {
+                                                    alert("Receiver not present.Please try again...!")
+                                                }
+                                            });
+                                    } else {
+                                        alert('Hotel information not found')
+                                    }
+                                })
+                            }
+                        })
+
+                    });
+                    pubnub.addListener({
+                        presence: function (presenceEvent) {
+
+                            console.log(presenceEvent.action) // online status events
+                            // console.log(presenceEvent.timestamp) // timestamp on the event is occurred
+                            // console.log(presenceEvent.uuid) // uuid of the user
+                            // console.log(presenceEvent.occupancy) // current number of users online
+                        },
+                        message: function (event) {
+
+                            lastTimeToken = event.timetoken;
+                            if (event.message.type == 'state') {
+                                var State = event.message.State;
+                                var maindiv = document.querySelector('#allcards');
+                                var msgdiv = document.createElement('div');
+                                msgdiv.className = 'card-view';
+                                msgdiv.id = lastTimeToken;
+                                var html = `<div class="card-view">
+                            <div class='bg'>
+                            <img src="` + State.ThumbnailImagePath + `" alt="company image">
+                            </div>
+                        <div class="container">
+                            <a href='#'><div class="tag_name cyan"></div></a>
+                            <div class="company">
+                            <div class="c_logo">
+                                <a href="#"><img src="https://s18.postimg.org/fs453bvx1/lo5.gif" alt="Medium"></a>
+                            </div>
+                            <div class="c_info">
+                                <a href="#" class="c_name">` + State.Hotel_Name + `</a><br>
+                                <span class="c_industry">` + State.ShortName + `</span><br>
+                                <span id="c_stars" data-star="` + State.HotelRating + `"></span>
+                                <div class="c_num">` + State.HotelRating + `</div >
+                            </div>
+                            <div class="c_content">
+                                <a href='` + State.WebsiteURL + `' class="title" target="_blank"><p> Go to website </p></a>
+                                <p >` + State.Add1 + `</p>
+                                <p class="review">` + State.IntroText + `</p>
+                            </div>
+                            </div> <!-- end .company -->
+
+                            <div class="user">
+                            <div class="user_avatar">
+                                <img src="https://s18.postimg.org/thyoc4j11/image.gif" alt="Ev Williams">
+                            </div>
+                            <div class="user_info">
+                                <a href="#" class="user_name orange">Evan Williams</a> • May 30, 2015<br>Current Brand Director
+                            </div>
+                            </div> <!-- end .user -->
+                        </div> <!-- end .container -->
+                        </div> <!-- end card -->
+                        `
+                                msgdiv.innerHTML = html;
+                                msgdiv.setAttribute("onload", "fixlayout");
+                                maindiv.appendChild(msgdiv);
+                                // $.post("/saveSlate", {
+                                //         State: JSON.stringify(State),
+                                //         SlateId: chat_channel,
+                                //         Clientid: "1234555"
+                                //     },
+                                //     function(data, status) {
+                                //         alert("Data: " + data + "\nStatus: " + status);
+                                //     });
+                            }
+
+
+                        },
+                        status: function (event) {
+
+                            if (event.category === "PNConnectedCategory") {
+
+                            }
+                        },
+                    });
+                    pubnub.subscribe({
+                        // channels: [chat_channel],
+                        channels: [chat_channel],
+                        withPresence: true // also subscribe to presence instances.
+                    });
+                    function subscribeslate(id) {
+
+
+                        pubnub.subscribe({
+                            // channels: [chat_channel],
+                            channels: [chat_channel + '_' + id],
+                            withPresence: true // also subscribe to presence instances.
+                        });
+                    }
+                    function unsubscribeslate(id) {
+
+
+                        pubnub.unsubscribe({
+                            // channels: [chat_channel],
+                            channels: [chat_channel + '_' + id],
+                            //withPresence: true // also subscribe to presence instances.
+                        });
+                    }
+                </script>
+
+
+
+                <div class="ui-widget">
+                    <label for="country" class="col-md-4 margin" Citycache>Country: </label>
+                    <input id="country" class="col-md-8 margin" Citycache>
+                    <br>
+                    <label for="city" class="col-md-4 margin" Citycache>City: </label>
+                    <input id="city" class="col-md-8 margin" Citycache>
+
+                    <label for="hotel" class="col-md-4 margin" Citycache>Hotel: </label>
+                    <input id="hotel" class="col-md-8 margin" Citycache>
+                    <button id="details" Citycache class="margin col-md-offset-2 btn btn-success btn-xs">Get Hotel details</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="allmsg" class="col-md-9">
+
+        <div class="panel panel-primary ">
+            <div class="panel-heading">
+                <h3 class="panel-title">Cards</h3>
+            </div>
+            <div class="panel-body" id="allcards">
+                <!-- <partial src="/template/item1.html"></partial>
+                <partial src="/template/item2.html"></partial>
+                <partial src="/template/item3.html"></partial>
+                <partial src="/template/item4.html"></partial> -->
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,296 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1404\cocoasubrtf470
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww25400\viewh16000\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\b\fs24 \cf0 Endpoints:\
+User endpoints:\
+POST - /user\
+
+\b0 For creating new user.\
+
+\b Body:\
+
+\b0 \{\
+    "user":\{\
+"email": "jimmykimmel@live.com",\
+"password": "ilovemattdamon",\
+    "name": "Jimmy"\
+    \}\
+\}\
+
+\b POST - /user/login\
+
+\b0 For logging in.\
+
+\b Body:\
+
+\b0 \{\
+    "user":\{\
+"email": "jimmykimmel@live.com",\
+"password": "ilovemattdamon"\
+    \}\
+\}\
+
+\b POST - /user\
+
+\b0 For getting information about user.\
+
+\b Header:\
+Authorisation
+\b0 	<Token got from logging me>\
+	\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\
+
+\b Medicine endpoints:\
+
+\b0 - Requires user token for all endpoints.\
+
+\b POST -/medicine\
+
+\b0 For adding new medicines\
+
+\b Body:\
+
+\b0 \{\
+    "medicine":\{\
+        "name":"Iodine",\
+        "image_url": "www.whatmedicine.com"\
+    \}\
+\}\
+
+\b GET - /medicine\
+
+\b0 Returns all medicines\
+
+\b GET - /medicine/\{id\}\
+
+\b0 Returns on specific medicine.\
+
+\b Video endpoints:\
+
+\b0 - Requires user token for all endpoints.\
+
+\b POST - /video\
+
+\b0 For adding new videos.\
+
+\b Body:
+\b0 \
+\{\
+    "video":\{\
+        "name":"Iodine",\
+        "url": "www.whatmedicine.com"\
+    \}\
+\}\
+
+\b GET - /video\
+
+\b0 Returns all videos\
+
+\b GET /video/\{id\}\
+
+\b0 Returns one specific video\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\b \cf0 POST - /application\
+
+\b0 For adding new application.\
+
+\b Body:
+\b0 \
+\{\
+    "application":\{\
+          "name": "yellow",\
+      "description": "Identifies color yellow",\
+      "logo_url": "www.google.com/asd",\
+      "appstore_link": "www.google.com/asd",\
+      "advertisment_image_url": "www.google.com/asd",\
+      "recommendation_reason": "Because I love it!"\
+    \}\
+\}\
+
+\b GET - /application\
+
+\b0 Returns all applications\
+
+\b GET /application/\{id\}\
+
+\b0 Returns one specific application\
+
+\b POST - /news\
+
+\b0 For adding new news.\
+
+\b Body:
+\b0 \
+\{\
+    "news":\{\
+"title": "Musk settles on mars",\
+"content": "In a parallel universe",\
+    "image_url": "www.google.co",\
+     "short_description": "There are already many species there",\
+    "url":"www.google.com"\
+    \}\
+\}\
+
+\b GET - /news\
+
+\b0 Returns all news\
+
+\b GET /news/\{id\}\
+
+\b0 Returns one specific news\
+
+\b POST - /slide\
+
+\b0 For adding new slide.\
+
+\b Body:
+\b0 \
+\{\
+    "slide":\{\
+        "title":"yellow",\
+        "text":"Yellow",\
+        "param":"Identifies color yellow",\
+        "background_image_url": "www.google.com/asd",\
+        "static_image_url":"www.google.com/asd",\
+        "slide_no":"www.google.com/asd",\
+        "type":"Because I love it!"\
+    \}\
+\}\
+
+\b GET - /slide\
+
+\b0 Returns all slide\
+
+\b GET /slide/\{id\}\
+
+\b0 Returns one specific slide\
+	\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\
+
+\b Patient Endpoints:\
+POST - /patient\
+
+\b0 For creating new patient.\
+
+\b Body:
+\b0 \
+\{\
+\
+    "patient":\{\
+    "firstName\'94:\'94Micheal\'94,\
+    "lastName": \'93J. Fox\'94,\
+    "email": \'93micheal@gmail.com",\
+    "password": "stark",\
+    "dob": "02/09/1992"\
+	\}\
+\}\
+
+\b POST - /patient/login\
+Body:\
+
+\b0 \{\
+\
+    "patient":\{\
+     "email": "usman123@gmail.com",\
+    "password": "stark"\
+	\}\
+\}\
+returns a patient token.\
+
+\b GET - /patient\
+
+\b0 Requires token, return patient.\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 	\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\
+All the following endpoints require patient token.\
+
+\b POST - 
+\b0 /patient/:upin/allergy\
+
+\b Body:\
+
+\b0 \{\
+    "allergy": \{\
+        "dateDiagnosed": "02/09/1992",\
+        "allergy": "Rash"\
+    \}\
+\}\
+
+\b GET - 
+\b0 /patient/:upin/allergy\
+would return allergies of patient.\
+
+\b POST - 
+\b0 /patient/:upin/physician\
+
+\b Body: 
+\b0 \
+\{\
+    "physician":\
+	\{\
+  	"name": "Trevor",\
+\
+  	"title":"Doctor",\
+  	"typeOfCare": "Physician"\
+	\}\
+\}\
+
+\b GET -  
+\b0 /patient/:upin/physician\
+
+\b POST - 
+\b0 /patient/:upin/application\
+
+\b Body:\
+
+\b0 \{\
+    "application":\{\
+        "name": "NFS 2015",\
+        "dateRegistered": "02/02/2012"\
+    \}\
+\}\
+
+\b GET - 
+\b0 /patient/:upin/application\
+
+\b POST - 
+\b0 /patient/:upin/appointment\
+\{\
+    "appointment": \{\
+        "CanIAddAnything": "Yes"\
+    \}\
+    \
+\}\
+
+\b GET - 
+\b0 /patient/:upin/appointment\
+\
+
+\b POST - 
+\b0 /patient/:upin/assist\
+\{\
+    "assist": \{\
+        "CanIAddAnything": "Yes"\
+    \}\
+\}\
+
+\b GET - 
+\b0 /patient/:upin/assist\
+
+\b POST - 
+\b0 /patient/:upin/demographic\
+'/patient/:upin/demographic'\
+'/patient/:upin/employment'\
+'/patient/:upin/employment'\
+'/patient/:upin/insurance'\
+'/patient/:upin/insurance'\
+'/patient/:upin/medicine'\
+'/patient/:upin/medicine'\
+'/patient/:upin/recomendation'\
+'/patient/:upin/recomendation'\
+'/patient/:upin/record'\
+'/patient/:upin/record'\
+'/patient/:upin/vitals'\
+'/patient/:upin/vitals'}
