@@ -31,3 +31,10 @@ ng generate service TodoData
 
 9.creating components
 ng generate component posts
+
+10.To build with compressed
+  ng build --prod --aot
+  
+11. build with compressed and no hash
+ng build --prod --aot --output-hashing none
+  
