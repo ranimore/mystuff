@@ -1,0 +1,20 @@
+#get count of matching elements
+##all available location
+db.resourcedetails.aggregate([{$group : {_id : "$Location", Empcount : {$sum : 1}}}])
+
+
+###with given values
+####if Array
+db.resourcedetails.aggregate( [
+{ $unwind : "$Resource_Skills" },
+  { $match: { "Resource_Skills":  {$in:["Java","Node.js","Jquery"]}  } },
+  { $group: { _id: "$Resource_Skills", count: { $sum: 1 } } }
+] );
+
+###if single
+db.resourcedetails.aggregate( [
+
+  { $match: { "Location":  {$in:["Pune","Mumbai","Chicago"]}  } },
+  { $group: { _id: "$Location", count: { $sum: 1 } } }
+] );
+
