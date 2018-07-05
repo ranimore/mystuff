@@ -18,3 +18,12 @@ db.resourcedetails.aggregate( [
   { $group: { _id: "$Location", count: { $sum: 1 } } }
 ] );
 
+
+
+##if array with filds
+
+db.resourcedetails.aggregate( [
+{ $unwind : "$Projects" },
+  { $match: { "Projects.Resource_Project":  {$in:["Resource Availability Matrix","WMS","SWMS"]}  } },
+  { $group: { _id: "$Projects.Resource_Project", count: { $sum: 1 } } }
+] );
