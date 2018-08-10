@@ -37,4 +37,17 @@ ng generate component posts
   
 11. build with compressed and no hash
 ng build --prod --aot --output-hashing none
+
+
+
+
+
+
+
+
+
+
+
+Learn angular from scratch
+https://blog.angularindepth.com/setting-up-angular-from-scratch-1f518c65d8ab
   
