@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>captcha example</title>
+</head>
+<body>
+    <input type="text" name="inputTxt" id="inputTxt">
+    <input type="hidden" name="hiddenTxt" id="hiddenTxt" value="{{text}}">
+    {{{data}}}
+   
+    <button onclick="validate()">validate</button>
+    <button onclick="refresh()">Refresh</button>
+   <br> <span  id="msg"></span>
+    <script >
+             function validate(){
+                  var inTxt =document.getElementById('inputTxt').value;
+                 var captchaTxt=  document.getElementById('hiddenTxt').value;
+                 if(inTxt==captchaTxt){
+                    document.getElementById('msg').style.color="green"
+                    document.getElementById('msg').innerText='Success';
+                 }
+                 else{
+                    document.getElementById('msg').innerText='Failed';
+                    document.getElementById('msg').style.color="red"
+                 }
+             }
+             function refresh(){
+              location.reload()
+             }
+    </script>
+   <br>
+
+    <input type="text" name="MathText" id="MathText">
+    <input type="hidden" name="hiddenMathTxt" id="hiddenMathTxt" value="{{MathText}}">
+    {{{MathData}}}
+   
+    <button onclick="Mathvalidate()">validate</button>
+    <button onclick="Mathrefresh()">Refresh</button>
+   <br> <span  id="msg2"></span>
+    <script >
+             function Mathvalidate(){
+                  var inTxt =document.getElementById('MathText').value;
+                 var captchaTxt=  document.getElementById('hiddenMathTxt').value;
+                 if(inTxt==captchaTxt){
+                    document.getElementById('msg2').style.color="green"
+                    document.getElementById('msg2').innerText='Success';
+                 }
+                 else{
+                    document.getElementById('msg2').innerText='Failed';
+                    document.getElementById('msg2').style.color="red"
+                 }
+             }
+             function Mathrefresh(){
+              location.reload()
+             }
+    </script>
+
+
+</body>
+</html>
