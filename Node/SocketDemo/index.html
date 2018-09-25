@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Socket Demo</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"></script>
+    <script type="text/javascript">
+        var socket = io.connect();
+        var roomno;
+        var roomname = "abc";
+        socket.on('connect', function () {
+            socket.emit('room', roomname)
+        })
+        socket.on('roomfull', function (msg) {
+            document.getElementById('room').innerText = msg;
+        })
+        socket.emit('getRooms');
+        function settyping() {
+            socket.emit('typing', roomno);
+        }
+        function sendmsg() {
+            var mymsg = document.getElementById('msg').value;
+            var obj = {
+                text: mymsg,
+                roomno: roomno
+            }
+            socket.emit('message', obj);
+            document.getElementById('msg').value = '';
+
+            return false;
+        }
+        socket.on('message', function (msg) {
+            var li = document.createElement('li');
+            li.innerText = msg.user + ": " + msg.text;
+            document.getElementById('messages').appendChild(li)
+        })
+        socket.on('broadcast', function (msg) {
+            document.getElementById('clients').innerText = msg.description;
+        })
+        socket.on('connectToRoom', function (msg) {
+            document.getElementById('room').innerText = msg.text;
+            roomno = msg.roomno;
+        })
+        socket.on('endtyping', function () {
+            document.getElementById('typing').innerText = '';
+        })
+        function setusername() {
+            var user = document.getElementById('user').value;
+            socket.emit('setuser', user);
+            document.getElementById('user').value = '';
+            document.getElementById('username').innerText = user;
+        }
+
+        socket.on('typing', function (msg) {
+            document.getElementById('typing').innerText = msg.username + " is typing.....";
+        })
+        socket.on('rooms', function (rooms) {
+           console.log(rooms)
+           var rooms=Object.keys(rooms).filter(item => item.startsWith('room-'));
+           document.getElementById('allrooms').innerHTML=''
+           rooms.forEach(element => {
+               var btn=document.createElement('button');
+               btn.id=element;
+               var name=element.split('-')
+               btn.innerText=name[1];
+               btn.addEventListener('click',function(){joinroom(name[1])});
+               document.getElementById('allrooms').appendChild(btn)
+           });
+        })
+        function joinroom(room){
+            socket.emit('room', room);
+        }
+        function createroom() {
+            var myroomname = document.getElementById('roomname').value;
+            socket.emit('room', myroomname);
+            document.getElementById('roomname').value = '';
+        }
+      
+    </script>
+</head>
+
+<body>
+    <div style="margin-top:20px;border: 1px solid blueviolet;padding:20px">
+        <input type="text" id="user" placeholder="Type your name.....!">
+        <button onclick="setusername()">Set Username</button><br><br>
+        <input type="text" id="roomname" placeholder="Type room name.....!">
+        <button onclick="createroom()">Create & join Room</button>
+        <div style="margin-top:10px" >
+            <span>Available rooms:</span>  
+            <div id="allrooms"></div>
+        </div>
+    </div>
+
+    <br>
+    <div style="margin-top:20px;border: 1px solid blueviolet;padding: 20px">
+        <h1>Welcome <span id="username">Anonymous</span>!</h1>
+        <h3 id="clients"></h3>
+        <h4 id="room"></h4>
+        <input type="text" id="msg" onkeypress="settyping()" placeholder="Type here.....!">
+        <button onclick="sendmsg()">Send</button>
+        <span id="typing" style="color:gray"></span>
+        <ul id="messages">
+
+        </ul>
+    </div>
+
+</body>
+
+</html>
